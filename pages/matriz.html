@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
     <script src="/js/script.js"></script>
     <title>Projeto Final</title>
 </head>
@@ -24,11 +28,81 @@
     </nav>
 
     <main>
-        <h1>Matrizes</h1>
 
-        <p>
-            
-        </p>
+        <section class="page" id="page-matrizes">
+            <div class="page-header">
+                <div class="page-eyebrow">Estruturas de Dados</div>
+                <h1 class="page-title">Matrizes <span class="accent">[ ][ ]</span></h1>
+                <p class="page-desc">
+                    Matrizes são arrays bidimensionais que representam dados em linhas e colunas - a base para grids, tabelas e dados tabulares
+                </p>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-card-title">Resumo</div>
+                <p>
+                    Uma <strong>matriz</strong> em JavaScript é simplesmente um array cujos elementos também são arrays - 
+                    um <em>array de arrays</em>. Para acessar um elemento, usa-se dois indices: o primeiro seleciona a linha
+                    e o segundo seleciona a coluna: <code>matriz[linha][coluna]</code>.
+                </p>
+                <p>
+                    Matrizes são mmuito utilizadas para representar grades de jogos, planilhas, imagens pixel-a-pixel,
+                    grafos de adjacência e qualquer dado com estrutura tabular. Para percorrê-las normalmente usa-se dois loops <code>for</code> aninhados.
+                </p>
+            </div>
+
+            <div class="topics-label">Tópicos</div>
+            <div class="accordion">
+
+                <div class="acc-item">
+                    <button class="acc-trigger" onclick="toggleAcc(this)">
+                        <div class="acc-left">
+                            <span class="acc-tag tag-blue">Matriz</span>
+                            <div>
+                                <div class="acc-name">Matrizes em JavaScript</div>
+                                <div class="acc-sub">Arrays bidimensionais e iteração</div>
+                            </div>
+                        </div>
+                        <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="acc-body">
+                        <div class="acc-content">
+                            <p>
+                                Crie uma matriz como um array literal de arrays. Para percorrer todos os elementos, use dois
+                                <code>for</code> aninhados - o externo para linhas e o interno para as colunas.
+                            </p>
+                            <p>
+                                A propriedade <code>matriz.length</code> retorna o número de linhas, 
+                                <code>matriz[0].length</code> retorna o numero de colunas da primeira linha (assumindo
+                                que todas as linhas têm o mesmo tamanho).
+                            </p>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-lang">JavaScript</span>
+                                    <div class="code-dots"><span></span><span></span><span></span></div>
+                                </div>
+                                <pre><span class="kw">const</span> <span class="nm">matriz</span> <span class="op">=</span> [
+     [<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>],
+     [<span class="nm">4</span>, <span class="nm">5</span>, <span class="nm">6</span>],
+     [<span class="nm">7</span>, <span class="nm">8</span>, <span class="nm">9</span>]
+];
+                                    
+console.<span class="fn">log</span>(<span class="nm">matriz</span>[<span class="nm">1</span>][<span class="nm">2</span>]); <span class="cm">// 6 (linha 1, coluna 2)</span>
+                                    
+<span class="kw">for</span> (<span class="kw">let</span> <span class="nm">i</span> <span class="op">=</span> <span class="nm">0</span>; <span class="nm">i</span> <span class="op">&lt;</span> <span class="nm">matriz</span>.length; <span class="nm">i</span><span class="op">++</span>) {
+    <span class="kw">for</span> (<span class="kw">let</span> <span class="nm">j</span> <span class="op">=</span> <span class="nm">0</span>; <span class="nm">j</span> <span class="op">&lt;</span> <span class="nm">matriz</span>[<span class="nm">i</span>].length; <span class="nm">j</span><span class="op">++</span>) {
+        console.<span class="fn">log</span>(<span class="nm">matriz</span>[<span class="nm">i</span>][<span class="nm">j</span>]);
+    }
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
 </body>
