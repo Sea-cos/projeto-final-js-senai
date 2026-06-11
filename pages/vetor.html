@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
     <script src="/js/script.js"></script>
     <title>Projeto Final</title>
 </head>
@@ -24,12 +28,82 @@
     </nav>
 
     <main>
-        <h1>Vetores</h1>
-        <p>
-            Um vetor é uma estrutura de dados que armazena uma coleção de elementos do mesmo tipo. Imagine uma linha de
-            gavetas numeradas de 1 a n. Cada gaveta guarda um valor único. Da mesma forma, um vetor tem posições (ou
-            índices) que começam em 0 e vão até n-1, onde "n" é o número total de elementos no vetor.
-        </p>
+
+        <section class="page" id="page-repeticao">
+            <div class="page-header">
+                <div class="page-eyebrow">Estruturas</div>
+                <h1 class="page-title">Vetores <span class="accent">[ ]</span></h1>
+                <p class="page-desc">
+                    Arrays são coleções ordenadas de elemtnos que permitem armazenar e manipular lista de dados de forma
+                    eficiente.
+                </p>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-card-title">Resumo</div>
+                <p>
+                    Um <strong>vetor</strong> (ou array unidimensional) é uma estrutura de dados que armazena uma
+                    sequência de valores
+                    em posições numeradas, chamadas <em>índices</em>. Em JavaScript, arrays são objetos dinâmicos: podem
+                    conter qualquer tipo de dado e crescer ou diminuir durante a execução.
+                </p>
+                <p>
+                    Os índices começam em <strong>0</strong> (zero-indexed). O array <code>["a", "b", "c"]</code> tem
+                    <code>arr[0] = "a"</code>, <code>arr[1] = "b"</code> e <code>arr[2] = "c"</code>.
+                    A propriedade <code>.length</code> retorna o número de elementos.
+                </p>
+            </div>
+
+            <div class="topics-label">Tópicos</div>
+            <div class="accordion">
+
+                <div class="acc-item">
+                    <button class="acc-trigger" onclick="toggleAcc(this)">
+                        <div class="acc-left">
+                            <span class="acc-tag tag-blue">Array</span>
+                            <div>
+                                <div class="acc-name">Vetores em JavaScript</div>
+                                <div class="acc-sub">Criação, acesso e métodos principais</div>
+                            </div>
+                        </div>
+                        <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="acc-body">
+                        <div class="acc-content">
+                            <p>
+                                Arrays são criados com colchetes <code>[]</code> ou com <code>new Array()</code>.
+                                Acesse elementos pelo índice: <code>arr[0]</code>. Modifique com atribuição direta:
+                                <code>arr[1] =  "novo"</code>
+                            </p>
+                            <p>
+                                Os métodos mais usados incluem <strong>push</strong> (adiciona ao fim), <strong>pop</strong> (remove do
+                                fim),
+                                <strong>shift</strong> (remove do início), <strong>unshift</strong> (adiciona ao inicio),
+                                <strong>map</strong> (transforma cada elemento) e <strong>filter</strong> (filtra elementos).
+                            </p>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-lang">JavaScript</span>
+                                    <div class="code-dots"><span></span><span></span><span></span></div>
+                                </div>
+                                <pre><span class="kw">const</span> <span class="nm">frutas</span> <span class="op">=</span> [<span class="str">"maçã"</span>, <span class="str">"banana"</span>, <span class="str">"uva"</span>];
+                                    
+console.<span class="fn">log</span>(<span class="nm">frutas</span>[<span class="nm">0</span>]);   <span class="cm">// "maçã"</span>
+console.<span class="fn">log</span>(<span class="nm">frutas</span>.length); <span class="cm">// 3</span>
+                                    
+<span class="nm">frutas</span>.<span class="fn">push</span>(<span class="str">"manga"</span>);
+<span class="cm">// frutas = ["maçã", "banana", "uva", "manga"]</span>
+                                    
+<span class="kw">const</span> <span class="nm">maiusculas</span> <span class="op">=</span> <span class="nm">frutas</span>.<span class="fn">map</span>(<span class="nm">f</span> <span class="op">=&gt;</span> <span class="nm">f</span>.<span class="fn">toUpperCase</span>());</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
 </body>
