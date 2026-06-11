@@ -91,6 +91,10 @@ nav .active {
     margin-bottom: 14px;
 }
 
+.page-title .accent {
+    color: var(--primary);
+}
+
 .page-desc {
     font-size: 15px;
     color: var(--text-muted);
