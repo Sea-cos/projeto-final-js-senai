@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
     <script src="/js/script.js"></script>
     <title>Projeto Final</title>
 </head>
@@ -17,25 +21,171 @@
 
     <nav>
         <a href="index.html">Inicio</a>
-        <a href="condicional.html">Estruturas Condicionais</a>
-        <a href="repeticao.html" class="active">Estruturas de Repetição</a>
+        <a href="condicional.html" class="active">Estruturas Condicionais</a>
+        <a href="repeticao.html">Estruturas de Repetição</a>
         <a href="vetor.html">Vetor</a>
         <a href="matriz.html">Matriz</a>
     </nav>
 
     <main>
-        <h1>Estruturas de Repetição</h1>
-        <p>
-            As estruturas de repetição permitem executar mais de uma vez um mesmo trecho de código. Trata-se de uma
-            forma de executar blocos de comandos somente sob determinadas condições, mas com a opção de repetir o mesmo
-            bloco quantas vezes for necessário.
-        
-            As estruturas de repetição são úteis, por exemplo, para repetir uma série de operações semelhantes que são
-            executadas para todos os elementos de uma lista ou de uma tabela de dados, ou simplesmente para repetir um
-            mesmo processamento até que uma certa condição seja satisfeita.
-        </p>
-        <h2>For</h2>
+
+        <section class="page" id="page-repeticao">
+            <div class="page-header">
+                <div class="page-eyebrow">Estruturas</div>
+                <h1 class="page-title">Estruturas de <span class="accent">Repetição</span></h1>
+                <p class="page-desc">
+                    Loops permitem executar um bloco de código múltiplas vezes. Em JavaScript existem três formas
+                    principais, cada
+                    uma com seu caso de uso ideal.
+                </p>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-card-title">Resumo</div>
+                <p>
+                    Uma estrutura de repetição (ou laço) executa um trecho de código enquanto uma condição for
+                    verdadeira,
+                    ou por um número determinado de vezes. São essenciais para percorrer listas, processar dados e
+                    automatizar
+                    tarefas repetitivas.
+                </p>
+                <p>
+                    Use <strong>for</strong> quando souber o número de iterações antecipadamente, <strong>while</strong>
+                    quando
+                    a condição de parada for avaliada antes de cada execução, e <strong>do...while</strong> quando o
+                    bloco
+                    precisar executar pelo menos uma vez.
+                </p>
+            </div>
+
+            <div class="topics-label">Tópicos</div>
+            <div class="accordion">
+
+                <div class="acc-item">
+                    <button class="acc-trigger" onclick="toggleAcc(this)">
+                        <div class="acc-left">
+                            <span class="acc-tag tag-blue">for</span>
+                            <div>
+                                <div class="acc-name">Loop for</div>
+                                <div class="acc-sub">Iteração com contador definido</div>
+                            </div>
+                        </div>
+                        <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="acc-body">
+                        <div class="acc-content">
+                            <p>
+                                O laço <strong>for</strong> é ideal quando você sabe exatamente quantas vezes quer
+                                repetir um bloco.
+                                Ele possui três partes: <strong>inicialização</strong> (executada uma vez no começo),
+                                <strong>condição</strong> (verificada antes de cada iteração) e
+                                <strong>incremento</strong> (executado
+                                ao final de cada iteração).
+                            </p>
+                            <p>
+                                Sintaxe: <code>for (inicialização; condição; incremento) { ... }</code>
+                            </p>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-lang">JavaScript</span>
+                                    <div class="code-dots"><span></span><span></span><span></span></div>
+                                </div>
+                                <pre>
+<span class="kw">for</span> (<span class="kw">let</span> <span class="nm">i</span> <span class="op">=</span> <span class="nm">0</span>; <span class="nm">i</span> <span class="op">&lt;</span> <span class="nm">5</span>; <span class="nm">i</span><span class="op">++</span>) {
+  console.<span class="fn">log</span>(<span class="nm">i</span>);
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="acc-item">
+                    <button class="acc-trigger" onclick="toggleAcc(this)">
+                        <div class="acc-left">
+                            <span class="acc-tag tag-green">while</span>
+                            <div>
+                                <div class="acc-name">Loop while</div>
+                                <div class="acc-sub">Condição avaliada antes da execução</div>
+                            </div>
+                        </div>
+                        <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="acc-body">
+                        <div class="acc-content">
+                            <p>
+                                O laço <strong>while</strong> continua executando enquanto a condição for verdadeira.
+                                A condição é avaliada <em>antes</em> de cada execução do bloco, portanto se for falsa
+                                desde o início,
+                                o bloco nunca será executado.
+                            </p>
+                            <p>
+                                Cuidado com loops infinitos: certifique-se de que a condição eventualmente se tornará
+                                falsa.
+                            </p>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-lang">JavaScript</span>
+                                    <div class="code-dots"><span></span><span></span><span></span></div>
+                                </div>
+                                <pre><span class="kw">let</span> <span class="nm">i</span> <span class="op">=</span> <span class="nm">0</span>;
+<span class="kw">while</span> (<span class="nm">i</span> <span class="op">&lt;</span> <span class="nm">5</span>) {
+  console.<span class="fn">log</span>(<span class="nm">i</span>);
+  <span class="nm">i</span><span class="op">++</span>;
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-trigger" onclick="toggleAcc(this)">
+                        <div class="acc-left">
+                            <span class="acc-tag tag-purple">do...while</span>
+                            <div>
+                                <div class="acc-name">Loop do...while</div>
+                                <div class="acc-sub">Executa ao menos uma vez</div>
+                            </div>
+                        </div>
+                        <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="acc-body">
+                        <div class="acc-content">
+                            <p>
+                                O laço <strong>do...while</strong> é semelhante ao <em>while</em>, mas a condição é
+                                verificada
+                                <em>depois</em> da execução do bloco. Isso garante que o código dentro do bloco seja
+                                executado
+                                pelo menos uma vez, independentemente da condição.
+                            </p>
+                            <p>
+                                Útil quando precisa executar uma ação antes de verificar se deve continuar — como
+                                validar input de
+                                usuário.
+                            </p>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-lang">JavaScript</span>
+                                    <div class="code-dots"><span></span><span></span><span></span></div>
+                                </div>
+                                <pre><span class="kw">let</span> <span class="nm">i</span> <span class="op">=</span> <span class="nm">0</span>;
+<span class="kw">do</span> {
+  console.<span class="fn">log</span>(<span class="nm">i</span>);
+  <span class="nm">i</span><span class="op">++</span>;
+} <span class="kw">while</span> (<span class="nm">i</span> <span class="op">&lt;</span> <span class="nm">5</span>);</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
+
 </body>
 
 </html>
