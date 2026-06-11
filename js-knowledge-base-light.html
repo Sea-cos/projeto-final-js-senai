@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JS Base — Conhecimento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #F4F6FB;
+      --bg-card: #FFFFFF;
+      --bg-hover: #EBF0FD;
+      --border: #D8E1F0;
+      --primary: #1949B3;
+      --primary-h: #2D5FD9;
+      --primary-bg: #EBF0FD;
+      --blue: #06B6D4;
+      --green: #059669;
+      --purple: #7C3AED;
+      --text: #1A1A2E;
+      --text-muted: #5A6A8A;
+      --sidebar-w: 240px;
+      --radius: 8px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* ── SIDEBAR ──────────────────────────────── */
+    #sidebar {
+      width: var(--sidebar-w);
+      background: var(--bg-card);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 100;
+      overflow-y: auto;
+    }
+
+    .sidebar-logo {
+      padding: 24px 20px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--primary);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+      flex-shrink: 0;
+      animation: pulse-logo 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-logo {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(25, 73, 179, 0.35);
+      }
+
+      50% {
+        box-shadow: 0 0 0 7px rgba(25, 73, 179, 0);
+      }
+    }
+
+    .logo-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--text);
+    }
+
+    .logo-text span {
+      color: var(--primary);
+    }
+
+    .logo-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 400;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+
+    .sidebar-nav {
+      padding: 12px 0;
+      flex: 1;
+    }
+
+    .nav-section-label {
+      padding: 16px 20px 6px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 20px;
+      cursor: pointer;
+      font-size: 13.5px;
+      color: var(--text-muted);
+      border-left: 3px solid transparent;
+      transition: all .18s;
+      user-select: none;
+    }
+
+    .nav-item:hover {
+      color: var(--text);
+      background: var(--bg-hover);
+    }
+
+    .nav-item.active {
+      color: var(--primary);
+      border-left-color: var(--primary);
+      background: var(--primary-bg);
+    }
+
+    .nav-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+      transition: background .18s;
+    }
+
+    .nav-item.active .nav-dot {
+      background: var(--primary);
+    }
+
+    .nav-item:hover .nav-dot {
+      background: var(--text-muted);
+    }
+
+    .sidebar-footer {
+      padding: 16px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ── MAIN ─────────────────────────────────── */
+    #main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      min-height: 100vh;
+    }
+
+    /* ── TOPBAR ───────────────────────────────── */
+    .topbar {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 0 36px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .topbar-breadcrumb {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .topbar-breadcrumb .crumb-active {
+      color: var(--text);
+    }
+
+    .topbar-badge {
+      background: var(--primary-bg);
+      color: var(--primary);
+      border: 1px solid rgba(25, 73, 179, 0.2);
+      border-radius: 20px;
+      font-size: 11px;
+      padding: 3px 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+    }
+
+    /* ── CONTENT AREA ─────────────────────────── */
+    .page {
+      display: none;
+      padding: 44px 36px 80px;
+      max-width: 860px;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* ── PAGE HEADER ──────────────────────────── */
+    .page-header {
+      margin-bottom: 36px;
+    }
+
+    .page-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .page-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .page-title .accent {
+      color: var(--primary);
+    }
+
+    .page-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    .page-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 32px 0;
+    }
+
+    /* ── SUMMARY CARD ─────────────────────────── */
+    .summary-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 32px;
+      border-left: 3px solid var(--primary);
+    }
+
+    .summary-card-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .summary-card-title::before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    .summary-card p {
+      font-size: 14.5px;
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    .summary-card p+p {
+      margin-top: 10px;
+    }
+
+    /* ── TOPICS LABEL ─────────────────────────── */
+    .topics-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    /* ── ACCORDION ────────────────────────────── */
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .acc-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color .2s;
+    }
+
+    .acc-item.open {
+      border-color: var(--primary);
+    }
+
+    .acc-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--text);
+      text-align: left;
+      gap: 12px;
+    }
+
+    .acc-trigger:hover {
+      background: var(--bg-hover);
+    }
+
+    .acc-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .acc-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 7px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .tag-blue {
+      background: rgba(6, 182, 212, .12);
+      color: #0369A1;
+      border: 1px solid rgba(6, 182, 212, .3);
+    }
+
+    .tag-green {
+      background: rgba(5, 150, 105, .12);
+      color: #065F46;
+      border: 1px solid rgba(5, 150, 105, .3);
+    }
+
+    .tag-purple {
+      background: rgba(124, 58, 237, .12);
+      color: #5B21B6;
+      border: 1px solid rgba(124, 58, 237, .3);
+    }
+
+    .tag-js {
+      background: rgba(25, 73, 179, .1);
+      color: #1949B3;
+      border: 1px solid rgba(25, 73, 179, .25);
+    }
+
+    .acc-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .acc-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .acc-arrow {
+      width: 18px;
+      height: 18px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      transition: transform .25s;
+    }
+
+    .acc-item.open .acc-arrow {
+      transform: rotate(180deg);
+      color: var(--primary);
+    }
+
+    .acc-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .acc-item.open .acc-body {
+      max-height: 2000px;
+    }
+
+    .acc-content {
+      padding: 0 20px 20px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+
+    .acc-content p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .acc-content p strong {
+      color: var(--text);
+    }
+
+    /* ── CODE BLOCK ───────────────────────────── */
+    .code-block {
+      background: #1A1F2E;
+      border: 1px solid #2D3748;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 14px;
+      background: #141926;
+      border-bottom: 1px solid #2D3748;
+    }
+
+    .code-lang {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      color: #4A7FE8;
+      font-weight: 600;
+    }
+
+    .code-dots {
+      display: flex;
+      gap: 5px;
+    }
+
+    .code-dots span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2D3748;
+    }
+
+    pre {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      line-height: 1.65;
+      padding: 16px;
+      color: #CBD5E1;
+      overflow-x: auto;
+    }
+
+    .kw {
+      color: #93C5FD;
+    }
+
+    .fn {
+      color: #C4B5FD;
+    }
+
+    .str {
+      color: #86EFAC;
+    }
+
+    .cm {
+      color: #64748B;
+    }
+
+    .nm {
+      color: #7DD3FC;
+    }
+
+    .op {
+      color: #FDA4AF;
+    }
+
+    /* ── PILLS ────────────────────────────────── */
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      background: var(--bg);
+    }
+
+    /* ── HOME GRID ────────────────────────────── */
+    .home-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .home-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      cursor: pointer;
+      transition: border-color .2s, transform .15s;
+    }
+
+    .home-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .home-card-icon {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .home-card h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .home-card p {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .home-card .card-tag {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 10px;
+      color: var(--primary);
+      font-family: 'JetBrains Mono', monospace;
+      border: 1px solid rgba(25, 73, 179, 0.25);
+      background: var(--primary-bg);
+      border-radius: 4px;
+      padding: 2px 6px;
+    }
+
+    /* ── SCROLL ───────────────────────────────── */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--text-muted);
+    }
+
+    /* ── RESPONSIVE ───────────────────────────── */
+    @media (max-width: 680px) {
+      :root {
+        --sidebar-w: 0px;
+      }
+
+      #sidebar {
+        display: none;
+      }
+
+      #main {
+        margin-left: 0;
+      }
+
+      .page {
+        padding: 24px 18px 60px;
+      }
+
+      .home-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════ SIDEBAR ═══════════════ -->
+  <nav id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-badge">
+        <div class="logo-icon">JS</div>
+        <div>
+          <div class="logo-text"><span>Base</span>Conhecimento</div>
+          <div class="logo-sub">JavaScript</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-nav">
+      <div class="nav-section-label">Navegação</div>
+      <div class="nav-item active" onclick="navigate('home')">
+        <span class="nav-dot"></span> Início
+      </div>
+
+      <div class="nav-section-label">Estruturas</div>
+      <div class="nav-item" onclick="navigate('repeticao')">
+        <span class="nav-dot"></span> Repetição
+      </div>
+      <div class="nav-item" onclick="navigate('condicional')">
+        <span class="nav-dot"></span> Condicionais
+      </div>
+      <div class="nav-item" onclick="navigate('vetores')">
+        <span class="nav-dot"></span> Vetores
+      </div>
+      <div class="nav-item" onclick="navigate('matrizes')">
+        <span class="nav-dot"></span> Matrizes
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      Base de Conhecimento JS<br />
+      <span style="color:var(--primary)">v1.0</span>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ MAIN ═══════════════ -->
+  <main id="main">
+
+    <div class="topbar">
+      <div class="topbar-breadcrumb" id="breadcrumb">
+        <span>jsbase</span> / <span class="crumb-active">início</span>
+      </div>
+      <div class="topbar-badge">JavaScript</div>
+    </div>
+
+    <!-- ─────── HOME ─────── -->
+    <section class="page active" id="page-home">
+      <div class="page-header">
+        <div class="page-eyebrow">Bem-vindo</div>
+        <h1 class="page-title">Base de <span class="accent">{ }</span> JavaScript</h1>
+        <p class="page-desc">
+          Um guia de referência rápida para os fundamentos da linguagem.
+          Navegue pelos tópicos no menu lateral ou clique nos cards abaixo.
+        </p>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-card-title">Sobre JavaScript</div>
+        <p>
+          JavaScript é uma linguagem de programação interpretada, de tipagem dinâmica e multiparadigma.
+          Ela é a principal linguagem do desenvolvimento web front-end e, com o Node.js, também amplamente
+          utilizada no back-end.
+        </p>
+        <p>
+          Esta base cobre as estruturas de controle e organização de dados essenciais para qualquer
+          desenvolvedor JavaScript, com exemplos práticos que você pode editar e testar.
+        </p>
+      </div>
+
+      <div class="home-grid">
+        <div class="home-card" onclick="navigate('repeticao')">
+          <div class="home-card-icon">↩</div>
+          <h3>Estruturas de Repetição</h3>
+          <p>Loops <code>for</code>, <code>while</code> e <code>do...while</code> para iterar sobre dados e executar
+            blocos repetidamente.</p>
+          <span class="card-tag">3 tópicos</span>
+        </div>
+        <div class="home-card" onclick="navigate('condicional')">
+          <div class="home-card-icon">⟋</div>
+          <h3>Estruturas Condicionais</h3>
+          <p>Controle o fluxo do código com <code>if...else</code> e <code>switch</code> para tomada de decisões.</p>
+          <span class="card-tag">2 tópicos</span>
+        </div>
+        <div class="home-card" onclick="navigate('vetores')">
+          <div class="home-card-icon">[ ]</div>
+          <h3>Vetores (Arrays)</h3>
+          <p>Armazene e manipule coleções ordenadas de elementos com o tipo <code>Array</code> do JavaScript.</p>
+          <span class="card-tag">1 tópico</span>
+        </div>
+        <div class="home-card" onclick="navigate('matrizes')">
+          <div class="home-card-icon">[ ][ ]</div>
+          <h3>Matrizes</h3>
+          <p>Arrays bidimensionais para representar grades, tabelas e estruturas de dados multidimensionais.</p>
+          <span class="card-tag">1 tópico</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────── REPETIÇÃO ─────── -->
+    <section class="page" id="page-repeticao">
+      <div class="page-header">
+        <div class="page-eyebrow">Estruturas</div>
+        <h1 class="page-title">Estruturas de <span class="accent">Repetição</span></h1>
+        <p class="page-desc">
+          Loops permitem executar um bloco de código múltiplas vezes. Em JavaScript existem três formas principais, cada
+          uma com seu caso de uso ideal.
+        </p>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-card-title">Resumo</div>
+        <p>
+          Uma estrutura de repetição (ou laço) executa um trecho de código enquanto uma condição for verdadeira,
+          ou por um número determinado de vezes. São essenciais para percorrer listas, processar dados e automatizar
+          tarefas repetitivas.
+        </p>
+        <p>
+          Use <strong>for</strong> quando souber o número de iterações antecipadamente, <strong>while</strong> quando
+          a condição de parada for avaliada antes de cada execução, e <strong>do...while</strong> quando o bloco
+          precisar executar pelo menos uma vez.
+        </p>
+        <div class="pill-row">
+          <span class="pill">for</span>
+          <span class="pill">while</span>
+          <span class="pill">do...while</span>
+          <span class="pill">iteração</span>
+          <span class="pill">loop infinito</span>
+          <span class="pill">break / continue</span>
+        </div>
+      </div>
+
+      <div class="topics-label">Tópicos</div>
+      <div class="accordion">
+
+        <div class="acc-item">
+          <button class="acc-trigger" onclick="toggleAcc(this)">
+            <div class="acc-left">
+              <span class="acc-tag tag-blue">for</span>
+              <div>
+                <div class="acc-name">Loop for</div>
+                <div class="acc-sub">Iteração com contador definido</div>
+              </div>
+            </div>
+            <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="acc-body">
+            <div class="acc-content">
+              <p>
+                O laço <strong>for</strong> é ideal quando você sabe exatamente quantas vezes quer repetir um bloco.
+                Ele possui três partes: <strong>inicialização</strong> (executada uma vez no começo),
+                <strong>condição</strong> (verificada antes de cada iteração) e <strong>incremento</strong> (executado
+                ao final de cada iteração).
+              </p>
+              <p>
+                Sintaxe: <code>for (inicialização; condição; incremento) { ... }</code>
+              </p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-lang">JavaScript</span>
+                  <div class="code-dots"><span></span><span></span><span></span></div>
+                </div>
+                <pre><span class="cm">// Adicione seu exemplo aqui</span>
+<span class="kw">for</span> (<span class="kw">let</span> <span class="nm">i</span> <span class="op">=</span> <span class="nm">0</span>; <span class="nm">i</span> <span class="op">&lt;</span> <span class="nm">5</span>; <span class="nm">i</span><span class="op">++</span>) {
+  console.<span class="fn">log</span>(<span class="nm">i</span>);
+}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-trigger" onclick="toggleAcc(this)">
+            <div class="acc-left">
+              <span class="acc-tag tag-green">while</span>
+              <div>
+                <div class="acc-name">Loop while</div>
+                <div class="acc-sub">Condição avaliada antes da execução</div>
+              </div>
+            </div>
+            <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="acc-body">
+            <div class="acc-content">
+              <p>
+                O laço <strong>while</strong> continua executando enquanto a condição for verdadeira.
+                A condição é avaliada <em>antes</em> de cada execução do bloco, portanto se for falsa desde o início,
+                o bloco nunca será executado.
+              </p>
+              <p>
+                Cuidado com loops infinitos: certifique-se de que a condição eventualmente se tornará falsa.
+              </p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-lang">JavaScript</span>
+                  <div class="code-dots"><span></span><span></span><span></span></div>
+                </div>
+                <pre><span class="cm">// Adicione seu exemplo aqui</span>
+<span class="kw">let</span> <span class="nm">i</span> <span class="op">=</span> <span class="nm">0</span>;
+<span class="kw">while</span> (<span class="nm">i</span> <span class="op">&lt;</span> <span class="nm">5</span>) {
+  console.<span class="fn">log</span>(<span class="nm">i</span>);
+  <span class="nm">i</span><span class="op">++</span>;
+}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-trigger" onclick="toggleAcc(this)">
+            <div class="acc-left">
+              <span class="acc-tag tag-purple">do...while</span>
+              <div>
+                <div class="acc-name">Loop do...while</div>
+                <div class="acc-sub">Executa ao menos uma vez</div>
+              </div>
+            </div>
+            <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="acc-body">
+            <div class="acc-content">
+              <p>
+                O laço <strong>do...while</strong> é semelhante ao <em>while</em>, mas a condição é verificada
+                <em>depois</em> da execução do bloco. Isso garante que o código dentro do bloco seja executado
+                pelo menos uma vez, independentemente da condição.
+              </p>
+              <p>
+                Útil quando precisa executar uma ação antes de verificar se deve continuar — como validar input de
+                usuário.
+              </p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-lang">JavaScript</span>
+                  <div class="code-dots"><span></span><span></span><span></span></div>
+                </div>
+                <pre><span class="cm">// Adicione seu exemplo aqui</span>
+<span class="kw">let</span> <span class="nm">i</span> <span class="op">=</span> <span class="nm">0</span>;
+<span class="kw">do</span> {
+  console.<span class="fn">log</span>(<span class="nm">i</span>);
+  <span class="nm">i</span><span class="op">++</span>;
+} <span class="kw">while</span> (<span class="nm">i</span> <span class="op">&lt;</span> <span class="nm">5</span>);</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─────── CONDICIONAL ─────── -->
+    <section class="page" id="page-condicional">
+      <div class="page-header">
+        <div class="page-eyebrow">Estruturas</div>
+        <h1 class="page-title">Estruturas <span class="accent">Condicionais</span></h1>
+        <p class="page-desc">
+          Condicionais permitem que seu programa tome decisões com base em expressões que resultam em verdadeiro ou
+          falso.
+        </p>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-card-title">Resumo</div>
+        <p>
+          Uma estrutura condicional avalia uma expressão e executa diferentes blocos de código conforme o resultado.
+          São a base do controle de fluxo em qualquer programa.
+        </p>
+        <p>
+          Use <strong>if...else</strong> para condições booleanas e fluxos com poucas ramificações.
+          Use <strong>switch</strong> quando um único valor precisa ser comparado com muitas opções distintas,
+          tornando o código mais legível.
+        </p>
+        <div class="pill-row">
+          <span class="pill">if</span>
+          <span class="pill">else if</span>
+          <span class="pill">else</span>
+          <span class="pill">switch</span>
+          <span class="pill">case</span>
+          <span class="pill">default</span>
+          <span class="pill">break</span>
+          <span class="pill">operador ternário</span>
+        </div>
+      </div>
+
+      <div class="topics-label">Tópicos</div>
+      <div class="accordion">
+
+        <div class="acc-item">
+          <button class="acc-trigger" onclick="toggleAcc(this)">
+            <div class="acc-left">
+              <span class="acc-tag tag-blue">if...else</span>
+              <div>
+                <div class="acc-name">if / else if / else</div>
+                <div class="acc-sub">Decisão baseada em condição booleana</div>
+              </div>
+            </div>
+            <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="acc-body">
+            <div class="acc-content">
+              <p>
+                O <strong>if</strong> avalia uma condição. Se for <em>truthy</em>, executa o bloco.
+                O <strong>else if</strong> encadeia outras condições. O <strong>else</strong> captura tudo que
+                não foi capturado antes. Você pode encadear quantos <em>else if</em> precisar.
+              </p>
+              <p>
+                O <strong>operador ternário</strong> (<code>condição ? valorSe : valorNão</code>) é uma versão
+                compacta do if...else para expressões simples.
+              </p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-lang">JavaScript</span>
+                  <div class="code-dots"><span></span><span></span><span></span></div>
+                </div>
+                <pre>
+                  <span class="cm">// Adicione seu exemplo aqui</span>
+                  <span class="kw">let</span> <span class="nm">nota</span> <span class="op">=</span> <span class="nm">75</span>;
+
+                  <span class="kw">if</span> (<span class="nm">nota</span> <span class="op">&gt;=</span> <span class="nm">90</span>) {
+                    console.<span class="fn">log</span>(<span class="str">"A"</span>);
+                  } <span class="kw">else if</span> (<span class="nm">nota</span> <span class="op">&gt;=</span> <span class="nm">70</span>) {
+                    console.<span class="fn">log</span>(<span class="str">"B"</span>);
+                  } <span class="kw">else</span> {
+                    console.<span class="fn">log</span>(<span class="str">"C"</span>);
+                  }
+                </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-trigger" onclick="toggleAcc(this)">
+            <div class="acc-left">
+              <span class="acc-tag tag-green">switch</span>
+              <div>
+                <div class="acc-name">switch...case</div>
+                <div class="acc-sub">Múltiplos valores para um único dado</div>
+              </div>
+            </div>
+            <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="acc-body">
+            <div class="acc-content">
+              <p>
+                O <strong>switch</strong> compara uma expressão com uma série de <strong>case</strong>s usando
+                igualdade estrita (<code>===</code>). Ao encontrar um match, executa o bloco daquele caso.
+              </p>
+              <p>
+                O <strong>break</strong> é essencial para evitar o <em>fall-through</em> (execução de cases seguintes
+                mesmo sem match). O <strong>default</strong> funciona como o <em>else</em>: é executado quando nenhum
+                case corresponder.
+              </p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-lang">JavaScript</span>
+                  <div class="code-dots"><span></span><span></span><span></span></div>
+                </div>
+                <pre><span class="cm">// Adicione seu exemplo aqui</span>
+<span class="kw">let</span> <span class="nm">dia</span> <span class="op">=</span> <span class="str">"segunda"</span>;
+
+<span class="kw">switch</span> (<span class="nm">dia</span>) {
+  <span class="kw">case</span> <span class="str">"segunda"</span>:
+    console.<span class="fn">log</span>(<span class="str">"Início da semana"</span>);
+    <span class="kw">break</span>;
+  <span class="kw">case</span> <span class="str">"sexta"</span>:
+    console.<span class="fn">log</span>(<span class="str">"Quase fim de semana!"</span>);
+    <span class="kw">break</span>;
+  <span class="kw">default</span>:
+    console.<span class="fn">log</span>(<span class="str">"Dia normal"</span>);
+}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─────── VETORES ─────── -->
+    <section class="page" id="page-vetores">
+      <div class="page-header">
+        <div class="page-eyebrow">Estruturas de Dados</div>
+        <h1 class="page-title">Vetores <span class="accent">[ ]</span></h1>
+        <p class="page-desc">
+          Arrays são coleções ordenadas de elementos que permitem armazenar e manipular listas de dados de forma
+          eficiente.
+        </p>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-card-title">Resumo</div>
+        <p>
+          Um <strong>vetor</strong> (ou array unidimensional) é uma estrutura de dados que armazena uma sequência de
+          valores
+          em posições numeradas, chamadas <em>índices</em>. Em JavaScript, arrays são objetos dinâmicos: podem conter
+          qualquer tipo
+          de dado e crescer ou diminuir durante a execução.
+        </p>
+        <p>
+          Os índices começam em <strong>0</strong> (zero-indexed). O array <code>["a", "b", "c"]</code> tem
+          <code>arr[0] = "a"</code>, <code>arr[1] = "b"</code> e <code>arr[2] = "c"</code>.
+          A propriedade <code>.length</code> retorna o número de elementos.
+        </p>
+        <div class="pill-row">
+          <span class="pill">push / pop</span>
+          <span class="pill">shift / unshift</span>
+          <span class="pill">splice / slice</span>
+          <span class="pill">indexOf / includes</span>
+          <span class="pill">map / filter / reduce</span>
+          <span class="pill">forEach</span>
+          <span class="pill">sort / reverse</span>
+        </div>
+      </div>
+
+      <div class="topics-label">Tópicos</div>
+      <div class="accordion">
+
+        <div class="acc-item">
+          <button class="acc-trigger" onclick="toggleAcc(this)">
+            <div class="acc-left">
+              <span class="acc-tag tag-js">Array</span>
+              <div>
+                <div class="acc-name">Vetores em JavaScript</div>
+                <div class="acc-sub">Criação, acesso e métodos principais</div>
+              </div>
+            </div>
+            <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="acc-body">
+            <div class="acc-content">
+              <p>
+                Arrays são criados com colchetes <code>[]</code> ou com <code>new Array()</code>.
+                Acesse elementos pelo índice: <code>arr[0]</code>. Modifique com atribuição direta:
+                <code>arr[1] = "novo"</code>.
+              </p>
+              <p>
+                Os métodos mais usados incluem <strong>push</strong> (adiciona ao fim), <strong>pop</strong> (remove do
+                fim),
+                <strong>shift</strong> (remove do início), <strong>unshift</strong> (adiciona ao início),
+                <strong>map</strong> (transforma cada elemento) e <strong>filter</strong> (filtra elementos).
+              </p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-lang">JavaScript</span>
+                  <div class="code-dots"><span></span><span></span><span></span></div>
+                </div>
+                <pre><span class="cm">// Adicione seu exemplo aqui</span>
+<span class="kw">const</span> <span class="nm">frutas</span> <span class="op">=</span> [<span class="str">"maçã"</span>, <span class="str">"banana"</span>, <span class="str">"uva"</span>];
+
+console.<span class="fn">log</span>(<span class="nm">frutas</span>[<span class="nm">0</span>]);   <span class="cm">// "maçã"</span>
+console.<span class="fn">log</span>(<span class="nm">frutas</span>.length); <span class="cm">// 3</span>
+
+<span class="nm">frutas</span>.<span class="fn">push</span>(<span class="str">"manga"</span>);
+<span class="cm">// frutas = ["maçã", "banana", "uva", "manga"]</span>
+
+<span class="kw">const</span> <span class="nm">maiusculas</span> <span class="op">=</span> <span class="nm">frutas</span>.<span class="fn">map</span>(<span class="nm">f</span> <span class="op">=&gt;</span> <span class="nm">f</span>.<span class="fn">toUpperCase</span>());</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─────── MATRIZES ─────── -->
+    <section class="page" id="page-matrizes">
+      <div class="page-header">
+        <div class="page-eyebrow">Estruturas de Dados</div>
+        <h1 class="page-title">Matrizes <span class="accent">[ ][ ]</span></h1>
+        <p class="page-desc">
+          Matrizes são arrays bidimensionais que representam dados em linhas e colunas — a base para grids, tabelas e
+          dados tabulares.
+        </p>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-card-title">Resumo</div>
+        <p>
+          Uma <strong>matriz</strong> em JavaScript é simplesmente um array cujos elementos também são arrays —
+          um <em>array de arrays</em>. Para acessar um elemento, usa-se dois índices: o primeiro seleciona a linha,
+          e o segundo seleciona a coluna: <code>matriz[linha][coluna]</code>.
+        </p>
+        <p>
+          Matrizes são muito utilizadas para representar grades de jogos, planilhas, imagens pixel-a-pixel,
+          grafos de adjacência e qualquer dado com estrutura tabular. Para percorrê-las, normalmente usa-se
+          dois loops <code>for</code> aninhados.
+        </p>
+        <div class="pill-row">
+          <span class="pill">array de arrays</span>
+          <span class="pill">matriz[i][j]</span>
+          <span class="pill">loops aninhados</span>
+          <span class="pill">linhas e colunas</span>
+          <span class="pill">matriz quadrada</span>
+          <span class="pill">transposta</span>
+        </div>
+      </div>
+
+      <div class="topics-label">Tópicos</div>
+      <div class="accordion">
+
+        <div class="acc-item">
+          <button class="acc-trigger" onclick="toggleAcc(this)">
+            <div class="acc-left">
+              <span class="acc-tag tag-js">Matriz</span>
+              <div>
+                <div class="acc-name">Matrizes em JavaScript</div>
+                <div class="acc-sub">Arrays bidimensionais e iteração</div>
+              </div>
+            </div>
+            <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="acc-body">
+            <div class="acc-content">
+              <p>
+                Crie uma matriz como um array literal de arrays. Para percorrer todos os elementos, use dois
+                <code>for</code> aninhados — o externo para as linhas e o interno para as colunas.
+              </p>
+              <p>
+                A propriedade <code>matriz.length</code> retorna o número de linhas.
+                <code>matriz[0].length</code> retorna o número de colunas da primeira linha (assumindo
+                que todas as linhas têm o mesmo tamanho).
+              </p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-lang">JavaScript</span>
+                  <div class="code-dots"><span></span><span></span><span></span></div>
+                </div>
+                <pre><span class="cm">// Adicione seu exemplo aqui</span>
+<span class="kw">const</span> <span class="nm">matriz</span> <span class="op">=</span> [
+  [<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>],
+  [<span class="nm">4</span>, <span class="nm">5</span>, <span class="nm">6</span>],
+  [<span class="nm">7</span>, <span class="nm">8</span>, <span class="nm">9</span>]
+];
+
+console.<span class="fn">log</span>(<span class="nm">matriz</span>[<span class="nm">1</span>][<span class="nm">2</span>]); <span class="cm">// 6 (linha 1, coluna 2)</span>
+
+<span class="kw">for</span> (<span class="kw">let</span> <span class="nm">i</span> <span class="op">=</span> <span class="nm">0</span>; <span class="nm">i</span> <span class="op">&lt;</span> <span class="nm">matriz</span>.length; <span class="nm">i</span><span class="op">++</span>) {
+  <span class="kw">for</span> (<span class="kw">let</span> <span class="nm">j</span> <span class="op">=</span> <span class="nm">0</span>; <span class="nm">j</span> <span class="op">&lt;</span> <span class="nm">matriz</span>[<span class="nm">i</span>].length; <span class="nm">j</span><span class="op">++</span>) {
+    console.<span class="fn">log</span>(<span class="nm">matriz</span>[<span class="nm">i</span>][<span class="nm">j</span>]);
+  }
+}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const pages = {
+      home: { id: 'page-home', crumb: 'início', label: 'Início' },
+      repeticao: { id: 'page-repeticao', crumb: 'repetição', label: 'Repetição' },
+      condicional: { id: 'page-condicional', crumb: 'condicionais', label: 'Condicionais' },
+      vetores: { id: 'page-vetores', crumb: 'vetores', label: 'Vetores' },
+      matrizes: { id: 'page-matrizes', crumb: 'matrizes', label: 'Matrizes' },
+    };
+
+    function navigate(key) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      document.getElementById(pages[key].id).classList.add('active');
+      document.getElementById('breadcrumb').innerHTML =
+        `<span>jsbase</span> / <span class="crumb-active">${pages[key].crumb}</span>`;
+      document.querySelectorAll('.nav-item').forEach(n => {
+        if (n.textContent.trim() === pages[key].label) n.classList.add('active');
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleAcc(btn) {
+      const item = btn.closest('.acc-item');
+      const isOpen = item.classList.contains('open');
+      item.closest('.accordion').querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+
+</body>
+
+</html>

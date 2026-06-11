@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js"></script>
+    <title>Projeto Final</title>
+</head>
+
+<body>
+
+    <header class="top-header">
+        Projeto Final - Base Conhecimento
+    </header>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="condicional.html" class="active">Estruturas Condicionais</a>
+        <a href="repeticao.html">Estruturas de Repetição</a>
+        <a href="vetor.html">Vetor</a>
+        <a href="matriz.html">Matriz</a>
+    </nav>
+
+    <main>
+
+        <section class="page" id="page-condicional">
+            <div class="page-header">
+                <div class="page-eyebrow">Estruturas</div>
+                <h1 class="page-title">Estruturas <span class="accent">Condicionais</span></h1>
+                <p class="page-desc">
+                    Condicionais permitem que seu programa tome decisões com base em expressões que resultam em
+                    verdadeiro ou falso.
+                </p>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-card-title">Resumo</div>
+                <p>
+                    Uma estrutura condicional avalia uma expressão e executa diferentes blocos de código conforme o
+                    resultado.
+                    São a base do controle de fluxo em qualquer programa.
+                </p>
+                <p>
+                    Use <strong>if...else</strong> para condições booleanas e fluxos com poucas ramificações.
+                    Use <strong>switch</strong> quando um único valor precisa ser comparado com muitas opções distintas,
+                    tornando o código mais legível.
+                </p>
+            </div>
+
+            <div class="topics-label">Tópicos</div>
+            <div class="accordion">
+
+                <div class="acc-item">
+                    <button class="acc-trigger" onclick="toggleAcc(this)">
+                        <div class="acc-left">
+                            <span class="acc-tag tag-blue">if...else</span>
+                            <div>
+                                <div class="acc-name">if / else if / else</div>
+                                <div class="acc-sub">Decisão baseada em condição booleana</div>
+                            </div>
+                        </div>
+                        <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="acc-body">
+                        <div class="acc-content">
+                            <p>
+                                O <strong>if</strong> avalia uma condição. Se for <em>verdadeiro</em>, executa o bloco.
+                                O <strong>else if</strong> encadeia outras condições. O <strong>else</strong> captura
+                                tudo que
+                                não foi capturado antes. Você pode encadear quantos <em>else if</em> precisar.
+                            </p>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-lang">JavaScript</span>
+                                    <div class="code-dots"><span></span><span></span><span></span></div>
+                                </div>
+                                <pre><span class="kw">let</span> <span class="nm">nota</span> <span class="op">=</span> <span class="nm">75</span>;
+
+<span class="kw">if</span> (<span class="nm">nota</span> <span class="op">&gt;=</span> <span class="nm">90</span>) {
+    console.<span class="fn">log</span>(<span class="str">"A"</span>);
+} <span class="kw">else if</span> (<span class="nm">nota</span> <span class="op">&gt;=</span> <span class="nm">70</span>) {
+    console.<span class="fn">log</span>(<span class="str">"B"</span>);
+} <span class="kw">else</span> {
+    console.<span class="fn">log</span>(<span class="str">"C"</span>);
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        <div class="acc-item">
+          <button class="acc-trigger" onclick="toggleAcc(this)">
+            <div class="acc-left">
+              <span class="acc-tag tag-green">switch</span>
+              <div>
+                <div class="acc-name">switch...case</div>
+                <div class="acc-sub">Múltiplos valores para um único dado</div>
+              </div>
+            </div>
+            <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="acc-body">
+            <div class="acc-content">
+              <p>
+                O <strong>switch</strong> compara uma expressão com uma série de <strong>case</strong>s usando
+                igualdade estrita (<code>===</code>). Ao encontrar um match, executa o bloco daquele caso.
+              </p>
+              <p>
+                O <strong>break</strong> é essencial para evitar o <em>fall-through</em> (execução de cases seguintes
+                mesmo sem match). O <strong>default</strong> funciona como o <em>else</em>: é executado quando nenhum
+                case corresponder.
+              </p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-lang">JavaScript</span>
+                  <div class="code-dots"><span></span><span></span><span></span></div>
+                </div>
+                <pre><span class="cm">// Adicione seu exemplo aqui</span>
+<span class="kw">let</span> <span class="nm">dia</span> <span class="op">=</span> <span class="str">"segunda"</span>;
+
+<span class="kw">switch</span> (<span class="nm">dia</span>) {
+  <span class="kw">case</span> <span class="str">"segunda"</span>:
+    console.<span class="fn">log</span>(<span class="str">"Início da semana"</span>);
+    <span class="kw">break</span>;
+  <span class="kw">case</span> <span class="str">"sexta"</span>:
+    console.<span class="fn">log</span>(<span class="str">"Quase fim de semana!"</span>);
+    <span class="kw">break</span>;
+  <span class="kw">default</span>:
+    console.<span class="fn">log</span>(<span class="str">"Dia normal"</span>);
+}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+
+</html>
