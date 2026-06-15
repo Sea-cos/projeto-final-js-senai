@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/css/exemplos.css">
+    <script src="/js/script.js"></script>
+    <title>Divisibilidade por 3 e 5</title>
+</head>
+
+<body>
+
+
+    <nav>
+        <h2>For - Exemplo 2</h2>
+        <div>
+            <button onclick="abrirModal()">Ver código fonte</button><button
+                onclick="window.location.href='../../repeticao.html'">Voltar</button>
+        </div>
+    </nav>
+
+
+
+    <h2>Verificar Divisibilidade por 3 e 5</h2>
+    <p>Insira um número, e o programa irá identificar os divisíveis de 1 até o número inserido.</p>
+
+    <input type="number" id="numero" placeholder="Digite um número inteiro positivo" min="1" step="1">
+    <button onclick="verificarDivisibilidade()">Verificar</button>
+
+    <div id="resultado"></div>
+
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()"></span>
+            <h3>Código Fonte</h3>
+            <pre id="codigo"></pre>
+        </div>
+    </div>
+
+
+    <script>
+        function verificarDivisibilidade() {
+            let numero = document.getElementById("numero").value;
+
+            if (numero === "") {
+                document.getElementById("resultado").innerText = "Digite um número inteiro positivo!";
+                return;
+            }
+
+            numero = parseInt(numero);
+
+            if (isNaN(numero) || numero <= 0) {
+                document.getElementById("resultado").innerText = "Digite um número inteiro positivo válido!";
+                return;
+            }
+
+            let contador = 0;
+            let numeros = "";
+
+            for (let i = 1; i <= numero; i++) {
+                if (i % 3 === 0 && i % 5 === 0) {
+                    contador++;
+                    numeros += i + ", ";
+                }
+            }
+
+            if (numeros !== "") {
+                numeros = numeros.substring(0, numeros.length - 2);
+            }
+
+            document.getElementById("resultado").innerHTML =
+                "<p><strong>Resultado:</strong></p>" +
+                "<p>Números divisíveis por 3 e 5: " + numeros + "</p>" +
+                "<p>Quantidade total: " + contador + "</p>";
+        }
+
+    </script>
+
+</body>
+
+</html>
