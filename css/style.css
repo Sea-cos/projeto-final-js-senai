@@ -54,7 +54,7 @@ nav a {
     text-decoration: none;
     color: beige;
     font-size: 20px;
-    width: 33%;
+    width: 20%;
     text-align: center;
 }
 
@@ -345,6 +345,7 @@ nav .active {
 
 .acc-content h3 {
     margin-bottom: 0;
+    margin-top: 40px;
 }
 
 .acc-content p strong {
@@ -421,4 +422,9 @@ pre {
 
 .op {
     color: #FDA4AF;
+}
+
+.exemplos{
+    width: 100%;
+
 }

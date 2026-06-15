@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/css/exemplos.css">
+    <script src="/js/script.js"></script>
+    <title>Tabuada com For</title>
+</head>
+
+<body>
+
+
+    <nav>
+        <h2>For - Exemplo 1</h2>
+        <div>
+            <button onclick="abrirModal()">Ver código fonte</button><button
+                onclick="window.location.href='../../repeticao.html'">Voltar</button>
+        </div>
+    </nav>
+
+
+
+    <h2>Gerar Tabuada</h2>
+
+    <input type="number" id="numero" placeholder="Digite um número inteiro positivo" min="1" step="1">
+    <button onclick="gerarTabuada()">Gerar tabuada</button>
+
+    <div id="resultado"></div>
+
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h3>Código Fonte</h3>
+            <pre id="codigo"></pre>
+        </div>
+    </div>
+
+
+    <script>
+        function gerarTabuada() {
+            let numero = document.getElementById("numero").value;
+
+            if (numero === "") {
+                document.getElementById("resultado").innerText = "Digite um número inteiro positivo!";
+                return;
+            }
+
+            numero = parseInt(numero);
+
+            if (isNaN(numero) || numero <= 0) {
+                document.getElementById("resultado").innerText = "Digite um número inteiro positivo válido!";
+                return;
+            }
+
+            let tabuada = "";
+
+            for (let contador = 1; contador <= 10; contador++) {
+                tabuada += numero + " x " + contador + " = " + (numero * contador) + "<br>";
+            }
+
+            document.getElementById("resultado").innerHTML = tabuada;
+        }
+
+    </script>
+
+</body>
+
+</html>
