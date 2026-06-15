@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/css/exemplos.css">
+    <script src="/js/script.js"></script>
+    <title>Faixa Etária</title>
+</head>
+
+<body>
+
+
+    <nav>
+        <h2>Switch..case - Exemplo 1</h2>
+        <div>
+            <button onclick="abrirModal()">Ver código fonte</button><button
+                onclick="window.location.href='../../condicional.html'">Voltar</button>
+        </div>
+    </nav>
+
+
+
+    <h2>Verificar Faixa Etária</h2>
+
+    <input type="number" id="idade" placeholder="Digite a idade" min="0">
+    <button onclick="verificar()">Verificar</button>
+
+    <div id="resultado"></div>
+
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h3>Código Fonte</h3>
+            <pre id="codigo"></pre>
+        </div>
+    </div>
+
+
+    <script>
+        function verificar() {
+            let idade = document.getElementById("idade").value;
+
+            if (idade === "") {
+                document.getElementById("resultado").innerText = "Digite uma idade!";
+                return;
+            }
+
+            idade = parseInt(idade);
+
+            if (isNaN(idade) || idade < 0) {
+                document.getElementById("resultado").innerText = "Digite uma idade válida!";
+                return;
+            }
+
+            let faixa;
+
+            switch (true) {
+                case (idade <= 3):
+                    faixa = "Bebê";
+                    break;
+                case (idade <= 10):
+                    faixa = "Criança";
+                    break;
+                case (idade <= 18):
+                    faixa = "Adolescente";
+                    break;
+                default:
+                    faixa = "Adulto";
+            }
+
+            document.getElementById("resultado").innerText = "Faixa etária: " + faixa;
+        }
+    </script>
+
+</body>
+
+</html>

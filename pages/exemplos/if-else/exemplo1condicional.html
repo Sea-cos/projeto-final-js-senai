@@ -9,6 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="/css/exemplos.css">
+    <script src="/js/script.js"></script>
     <title>Par ou Ímpar</title>
 </head>
 
@@ -19,7 +20,7 @@
         <h2>If..else - Exemplo 1</h2>
         <div>
             <button onclick="abrirModal()">Ver código fonte</button><button
-                onclick="window.location.href='../condicional.html'">Voltar</button>
+                onclick="window.location.href='../../condicional.html'">Voltar</button>
         </div>
     </nav>
 
@@ -56,24 +57,6 @@
                 } else {
                     document.getElementById("resultado").innerText = "O número é ÍMPAR";
                 }
-            }
-        }
-
-
-        function abrirModal() {
-            const html = document.documentElement.outerHTML;
-            document.getElementById('codigo').textContent = html;
-            document.getElementById('modal').style.display = 'block';
-        }
-
-        function fecharModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-
-        window.onclick = function (event) {
-            const modal = document.getElementById('modal');
-            if (event.target === modal) {
-                fecharModal();
             }
         }
 
