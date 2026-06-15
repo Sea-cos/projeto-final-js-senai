@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/css/exemplos.css">
+    <title>Par ou Ímpar</title>
+</head>
+
+<body>
+
+
+    <nav>
+        <h2>If..else - Exemplo 1</h2>
+        <div>
+            <button onclick="abrirModal()">Ver código fonte</button><button
+                onclick="window.location.href='../condicional.html'">Voltar</button>
+        </div>
+    </nav>
+
+
+
+    <h2>Verificar Par ou Ímpar</h2>
+
+    <input type="number" id="numero" placeholder="Digite um número">
+    <button onclick="verificar()">Verificar</button>
+
+    <div id="resultado"></div>
+
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h3>Código Fonte</h3>
+            <pre id="codigo"></pre>
+        </div>
+    </div>
+
+
+    <script>
+        function verificar() {
+            let numero = document.getElementById("numero").value;
+
+            if (numero === "") {
+                document.getElementById("resultado").innerText = "Digite um número!";
+            } else {
+                numero = parseInt(numero);
+
+                if (numero % 2 === 0) {
+                    document.getElementById("resultado").innerText = "O número é PAR";
+                } else {
+                    document.getElementById("resultado").innerText = "O número é ÍMPAR";
+                }
+            }
+        }
+
+
+        function abrirModal() {
+            const html = document.documentElement.outerHTML;
+            document.getElementById('codigo').textContent = html;
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        function fecharModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        window.onclick = function (event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                fecharModal();
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
