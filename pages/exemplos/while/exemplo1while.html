@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/css/exemplos.css">
+    <script src="/js/script.js"></script>
+    <title>Exemplo 1 - While</title>
+</head>
+
+<body>
+
+    <nav>
+        <h2>While - Exemplo 1</h2>
+        <div>
+            <button onclick="abrirModal()">Ver código fonte</button><button onclick="window.location.href='../../repeticao.html'">Voltar</button>
+        </div>
+    </nav>
+
+    <h2>Repetição de Números</h2>
+    <p>Insira números ao clicar no botão. Para encerrar o programa, insira 0.</p>
+
+    <button onclick="repeticaoNumero()">Iniciar</button>
+
+    <div id="resultado"></div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h3>Código Fonte</h3>
+            <pre id="codigo"></pre>
+        </div>
+    </div>
+
+
+    <script>
+        function repeticaoNumero() {
+            let numero =  parseInt(prompt("Insira um número: "));
+            let soma = 0;
+            let contador = 0;
+
+            while (numero !== 0) {
+                soma += numero;
+                contador++;
+
+                numero = parseInt(prompt("Insira um número: "))
+            }
+
+            document.getElementById("resultado").innerText = "Soma total: " + soma + "\nNúmeros inseridos: " + contador
+
+        }
+    </script>
+
+</body>
+
+</html>

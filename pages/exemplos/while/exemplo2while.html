@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/css/exemplos.css">
+    <script src="/js/script.js"></script>
+    <title>Exemplo 2 - While</title>
+</head>
+
+<body>
+
+    <nav>
+        <h2>While - Exemplo 2</h2>
+        <div>
+            <button onclick="abrirModal()">Ver código fonte</button><button
+                onclick="window.location.href='../../repeticao.html'">Voltar</button>
+        </div>
+    </nav>
+
+    <h2>Validador de Número Primo</h2>
+
+    <input type="number" id="numero" placeholder="Digite um número">
+    <button onclick="validarPrimo()">Verificar</button>
+
+    <div id="resultado"></div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h3>Código Fonte</h3>
+            <pre id="codigo"></pre>
+        </div>
+    </div>
+
+
+    <script>
+        function validarPrimo() {
+            let numero = parseInt(document.getElementById("numero").value);
+            let isPrimo = true;
+            let divisor = 2;
+
+            while (divisor < numero) {
+                if (numero % divisor === 0) {
+                    isPrimo = false
+                }
+                divisor++;
+            }
+
+            if (numero <= 1) {
+                document.getElementById("resultado").innerText = "Não é primo."
+            } else if (isPrimo) {
+                document.getElementById("resultado").innerText = "É primo."
+            } else {
+                document.getElementById("resultado").innerText = "Não é primo."
+            }
+        }
+    </script>
+
+</body>
+
+</html>
