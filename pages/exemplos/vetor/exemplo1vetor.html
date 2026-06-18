@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../../../css/exemplos.css">
+    <script src="../../../js/script.js"></script>
+    <title>Exemplo 1 - Vetores</title>
+</head>
+
+<body>
+
+    <nav>
+        <h2>Vetores - Exemplo 1</h2>
+        <div>
+            <button onclick="abrirModal()">Ver código fonte</button><button
+                onclick="window.location.href='../../vetor.html'">Voltar</button>
+        </div>
+    </nav>
+
+    <h2>Somar valores em vetor</h2>
+    <p>Insira 5 número para identificar a soma total.</p>
+
+    <button onclick="somarVetor()">Iniciar</button>
+
+    <div id="resultado"></div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h3>Código Fonte</h3>
+            <pre id="codigo"></pre>
+        </div>
+    </div>
+
+    <script>
+        function somarVetor() {
+            let numeros = new Array(5);
+            let soma = 0;
+            let i;
+
+            for (i = 0; i < numeros.length; i++) {
+                numeros[i] = parseInt(prompt("Insira o " + (i + 1) + " número: "));
+                soma += numeros[i];
+            }
+
+            if (Number.isNaN(soma)) {
+                document.getElementById("resultado").innerText = "Por favor, insira apenas números."
+            } else {
+                document.getElementById("resultado").innerText = "Vetor: " + numeros + "\nSoma: " + soma;
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>

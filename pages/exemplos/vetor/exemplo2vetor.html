@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../../../css/exemplos.css">
+    <script src="../../../js/script.js"></script>
+    <title>Exemplo 2 - Vetores</title>
+</head>
+
+<body>
+
+    <nav>
+        <h2>Vetores - Exemplo 2</h2>
+        <div>
+            <button onclick="abrirModal()">Ver código fonte</button><button
+                onclick="window.location.href='../../vetor.html'">Voltar</button>
+        </div>
+    </nav>
+
+    <h2>Localizar menor e maior número</h2>
+
+    <button onclick="validarVetor()">Iniciar</button>
+
+    <div id="resultado"></div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h3>Código Fonte</h3>
+            <pre id="codigo"></pre>
+        </div>
+    </div>
+
+    <script>
+        function validarVetor() {
+
+            let numeros = new Array(8);
+            let maiorNum;
+            let menorNum;
+
+            for (let i = 0; i < numeros.length; i++) {
+                numeros[i] = parseInt(prompt("Insira o " + (i + 1) + " número: "))
+
+                if (i === 0) {
+                    maiorNum = numeros[0]
+                    menorNum = numeros[0]
+                }
+
+                if (numeros[i] > maiorNum) {
+                    maiorNum = numeros[i]
+                } else if (numeros[i] < menorNum) {
+                    menorNum = numeros[i]
+                }
+            }
+
+            document.getElementById("resultado").innerHTML =
+                "Vetor: " + numeros +
+                "<br> Maior número: " + maiorNum +
+                "<br> Menor número: " + menorNum
+        }
+    </script>
+</body>
+
+</html>
