@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../../../css/exemplos.css">
+    <script src="../../../js/script.js"></script>
+    <title>Exemplo 2 - Do While</title>
+</head>
+
+<body>
+
+    <nav>
+        <h2>Do While - Exemplo 2</h2>
+        <div>
+            <button onclick="abrirModal()">Ver código fonte</button><button onclick="window.location.href='../../repeticao.html'">Voltar</button>
+        </div>
+    </nav>
+
+    <h2>Validação de Menu</h2>
+    
+
+    <button onclick="validarMenu()">Iniciar</button>
+
+    <div id="resultado"></div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h3>Código Fonte</h3>
+            <pre id="codigo"></pre>
+        </div>
+    </div>
+
+    <script>
+        function validarMenu() {
+            let escolha;
+            let date = new Date();
+            let today = date.getDate();
+
+
+            do {
+                escolha = parseInt(prompt("Selecione uma opção: \n1. Mostrar mensagem \n2. Mostrar dia de hoje\n3. Sair"))
+
+                switch (escolha) {
+                    case 1:
+                        alert("Olá, mundo!")
+                        break;
+                    case 2:
+                        alert("O dia de hoje é: " + today)
+                    default:
+                        break;
+                }
+            } while (escolha !== 3);
+
+            
+        }
+    </script>
+</body>
+
+</html>
