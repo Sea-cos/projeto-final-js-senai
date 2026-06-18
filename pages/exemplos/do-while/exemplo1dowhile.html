@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../../../css/exemplos.css">
+    <script src="../../../js/script.js"></script>
+    <title>Exemplo 1 - Do While</title>
+</head>
+
+<body>
+
+    <nav>
+        <h2>Do While - Exemplo 1</h2>
+        <div>
+            <button onclick="abrirModal()">Ver código fonte</button><button onclick="window.location.href='../../repeticao.html'">Voltar</button>
+        </div>
+    </nav>
+
+    <h2>Validar senha especifica</h2>
+    <p>O programa vai solicitar até que a senha inserida seja '1234'.</p>
+
+    <button onclick="validarSenha()">Iniciar</button>
+
+    <div id="resultado"></div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h3>Código Fonte</h3>
+            <pre id="codigo"></pre>
+        </div>
+    </div>
+
+    <script>
+        function validarSenha() {
+            let senha;
+
+            do {
+                senha = prompt("Insira a senha para acessar o sistema: ")
+            } while (senha != "1234");
+
+            document.getElementById("resultado").innerText = "Acesso permitido!"
+        }
+    </script>
+</body>
+
+</html>
