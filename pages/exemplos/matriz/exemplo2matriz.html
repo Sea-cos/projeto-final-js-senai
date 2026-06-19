@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../../../css/exemplos.css">
+    <script src="../../../js/script.js"></script>
+    <title>Exemplo 2 - Matrizes</title>
+</head>
+
+<body>
+
+    <nav>
+        <h2>Matrizes - Exemplo 2</h2>
+        <div>
+            <button onclick="abrirModal()">Ver código fonte</button><button
+                onclick="window.location.href='../../matriz.html'">Voltar</button>
+        </div>
+    </nav>
+
+    <h2>Calcular diagonal da matriz</h2>
+
+    <button onclick="calcularDiagonal()">Iniciar</button>
+
+    <div id="matriz" style="margin-top: 30px;"></div>
+    <div id="resultado"></div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h3>Código Fonte</h3>
+            <pre id="codigo"></pre>
+        </div>
+    </div>
+
+    <script>
+        function calcularDiagonal() {
+            let linha,
+                coluna;
+            let matriz = [
+                [],
+                [],
+                []
+            ];
+            let numeroValido = true
+            let somaDiagonal = 0;
+            let texto = "";
+
+            for (linha = 0; linha < 3; linha++) {
+                for (coluna = 0; coluna < 3; coluna++) {
+                    matriz[linha][coluna] = parseInt(
+                        prompt("Digite o valor da posição [" + linha + "][" + coluna + "]:")
+                    );
+
+                    if (Number.isNaN(matriz[linha][coluna])) {
+                        numeroValido = false;
+                    }
+
+                    if (linha === coluna) {
+                        somaDiagonal += matriz[linha][coluna];
+                    }
+                }
+            }
+
+            if (numeroValido == false) {
+                document.getElementById("resultado").innerHTML = "Insira somente números!"
+            } else {
+                for (linha = 0; linha < 3; linha++) {
+                    for (coluna = 0; coluna < 3; coluna++) {
+                        texto += matriz[linha][coluna] + " ";
+                    }
+                    texto += "<br>";
+                }
+                document.getElementById("matriz").innerHTML = texto;
+                document.getElementById("resultado").innerHTML =
+                    "Soma da diagonal principal: " + somaDiagonal;
+            }
+        }
+    </script>
+</body>
+
+</html>

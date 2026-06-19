@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../../../css/exemplos.css">
+    <script src="../../../js/script.js"></script>
+    <title>Exemplo 1 - Matrizes</title>
+</head>
+
+<body>
+
+    <nav>
+        <h2>Matrizes - Exemplo 1</h2>
+        <div>
+            <button onclick="abrirModal()">Ver código fonte</button><button
+                onclick="window.location.href='../../matriz.html'">Voltar</button>
+        </div>
+    </nav>
+
+    <h2>Preencher e listar uma matriz</h2>
+
+    <button onclick="validarMatriz()">Iniciar</button>
+
+    <div id="resultado"></div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h3>Código Fonte</h3>
+            <pre id="codigo"></pre>
+        </div>
+    </div>
+
+    <script>
+        function validarMatriz() {
+            let linha,
+                coluna;
+
+            let matriz = [
+                [],
+                []
+            ];
+
+            let tela = document.getElementById("resultado")
+            let resultado = ""
+
+            for (linha = 0; linha < 2; linha++) {
+                for (coluna = 0; coluna < 2; coluna++) {
+                    matriz[linha][coluna] = parseInt(prompt("Digite o valor da posição [" + linha + "][" + coluna + "]:"))
+                }
+            }
+
+            for (linha = 0; linha < 2; linha++) {
+
+                for (coluna = 0; coluna < 2; coluna++) {
+                    resultado += matriz[linha][coluna] + " "
+                }
+                resultado += "<br>"
+            }
+
+            tela.innerHTML = resultado;
+        }
+    </script>
+</body>
+
+</html>
