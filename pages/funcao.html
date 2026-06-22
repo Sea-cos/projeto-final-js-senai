@@ -32,20 +32,20 @@
 
         <section class="page" id="page-funcoes">
             <div class="page-header">
-                <div class="page-eyebrow">Estruturas de Dados</div>
-                <h1 class="page-title">Funções <span class="accent">{  }</span></h1>
+                <div class="page-eyebrow">Estruturas de Código</div>
+                <h1 class="page-title">Funções <span class="accent">{ }</span></h1>
                 <p class="page-desc">
-                    Função
+                    Funções são blocos reutilizáveis de código que realizam tarefas específicas. Elas permitem organizar seu código de forma modular, evitar repetição e tornar seu programa mais legível e mantenível.
                 </p>
             </div>
 
             <div class="summary-card">
                 <div class="summary-card-title">Resumo</div>
                 <p>
-                   função
+                    Uma <strong>função</strong> é um conjunto de instruções agrupadas que executa uma tarefa ou calcula um valor. Funções podem receber <strong>parâmetros</strong> (dados de entrada) e retornar um <strong>resultado</strong> (dado de saída).
                 </p>
                 <p>
-                    função
+                    Use funções para evitar repetir o mesmo código, organizar lógica complexa e tornar seu programa mais fácil de testar e manter. Uma função deve fazer <em>uma coisa bem</em> - ter um propósito claro e específico.
                 </p>
             </div>
 
@@ -55,10 +55,10 @@
                 <div class="acc-item">
                     <button class="acc-trigger" onclick="toggleAcc(this)">
                         <div class="acc-left">
-                            <span class="acc-tag tag-blue">Array</span>
+                            <span class="acc-tag tag-blue">Função</span>
                             <div>
-                                <div class="acc-name">Vetores em JavaScript</div>
-                                <div class="acc-sub">Criação, acesso e métodos principais</div>
+                                <div class="acc-name">Funções em JavaScript</div>
+                                <div class="acc-sub">Criação, parâmetros e retorno de valores</div>
                             </div>
                         </div>
                         <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -68,59 +68,35 @@
                     <div class="acc-body">
                         <div class="acc-content">
                             <p>
-                                Arrays são criados com colchetes <code>[]</code> ou com <code>new Array()</code>.
-                                Acesse elementos pelo índice: <code>arr[0]</code>. Modifique com atribuição direta:
-                                <code>arr[1] =  "novo"</code>
+                                Uma função é declarada com a palavra-chave <strong>function</strong>, seguida de um nome, parênteses para parâmetros e um bloco de código entre chaves.
                             </p>
                             <p>
-                                Os métodos mais usados incluem <strong>push</strong> (adiciona ao fim),
-                                <strong>pop</strong> (remove do
-                                fim),
-                                <strong>shift</strong> (remove do início), <strong>unshift</strong> (adiciona ao
-                                inicio),
-                                <strong>map</strong> (transforma cada elemento) e <strong>filter</strong> (filtra
-                                elementos).
+                                Use <strong>return</strong> para devolver um valor da função. Após o return, a função interrompe e nenhum código após esta instrução é executado. Você pode chamar uma função quantas vezes quiser pelo seu nome seguido de parênteses.
                             </p>
                             <div class="code-block">
                                 <div class="code-header">
                                     <span class="code-lang">JavaScript</span>
                                     <div class="code-dots"><span></span><span></span><span></span></div>
                                 </div>
-                                <pre><span class="kw">const</span> <span class="nm">frutas</span> <span class="op">=</span> [<span class="str">"maçã"</span>, <span class="str">"banana"</span>, <span class="str">"uva"</span>];
-                                    
-console.<span class="fn">log</span>(<span class="nm">frutas</span>[<span class="nm">0</span>]);   <span class="cm">// "maçã"</span>
-console.<span class="fn">log</span>(<span class="nm">frutas</span>.length); <span class="cm">// 3</span>
-                                    
-<span class="nm">frutas</span>.<span class="fn">push</span>(<span class="str">"manga"</span>);
-<span class="cm">// frutas = ["maçã", "banana", "uva", "manga"]</span>
-                                    
-<span class="kw">const</span> <span class="nm">maiusculas</span> <span class="op">=</span> <span class="nm">frutas</span>.<span class="fn">map</span>(<span class="nm">f</span> <span class="op">=&gt;</span> <span class="nm">f</span>.<span class="fn">toUpperCase</span>());</pre>
+                                <pre><span class="kw">function</span> <span class="fn">saudar</span>(<span class="nm">nome</span>) {
+  <span class="kw">return</span> <span class="str">"Olá, "</span> <span class="op">+</span> <span class="nm">nome</span>;
+}
+
+console.<span class="fn">log</span>(<span class="fn">saudar</span>(<span class="str">"Maria"</span>)); <span class="cm">// "Olá, Maria"</span>
+
+<span class="kw">function</span> <span class="fn">somar</span>(<span class="nm">a</span>, <span class="nm">b</span>) {
+  <span class="kw">return</span> <span class="nm">a</span> <span class="op">+</span> <span class="nm">b</span>;
+}
+
+console.<span class="fn">log</span>(<span class="fn">somar</span>(<span class="nm">5</span>, <span class="nm">3</span>)); <span class="cm">// 8</span></pre>
                             </div>
+
                             <div class="exemplos">
                                 <h3>Exemplo 1</h3>
                                 <p>
-                                    Crie um programa que: <br>
-
-                                    Armazene 5 números em um vetor <br>
-                                    Mostre todos os números digitados <br>
-                                    Calcule e mostre a soma total dos valores <br>
+                                    
                                 </p>
-                                <button
-                                    onclick="window.location.href='./exemplos/vetor/exemplo1vetor.html'">Acessar
-                                    página
-                                </button>
-                                <h3>Exemplo 2</h3>
-                                <p>
-                                    Crie um programa que: <br>
-
-                                    Leia 8 números inteiros e armazene em um vetor <br>
-                                    Mostre o maior número <br>
-                                    Mostre o menor número <br>
-                                </p>
-                                <button
-                                    onclick="window.location.href='./exemplos/vetor/exemplo2vetor.html'">Acessar
-                                    página
-                                </button>
+                                
                             </div>
                         </div>
                     </div>
