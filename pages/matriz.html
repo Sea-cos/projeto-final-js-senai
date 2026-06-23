@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet" />
-    <script src="/js/script.js"></script>
+    <script src="../js/script.js"></script>
     <title>Projeto Final</title>
 </head>
 
@@ -20,11 +20,12 @@
     </header>
 
     <nav>
-        <a href="index.html">Inicio</a>
+        <a href="../index.html">Inicio</a>
         <a href="condicional.html">Estruturas Condicionais</a>
         <a href="repeticao.html">Estruturas de Repetição</a>
         <a href="vetor.html">Vetor</a>
         <a href="matriz.html" class="active">Matriz</a>
+        <a href="funcao.html">Função</a>
     </nav>
 
     <main>
@@ -34,20 +35,23 @@
                 <div class="page-eyebrow">Estruturas de Dados</div>
                 <h1 class="page-title">Matrizes <span class="accent">[ ][ ]</span></h1>
                 <p class="page-desc">
-                    Matrizes são arrays bidimensionais que representam dados em linhas e colunas - a base para grids, tabelas e dados tabulares
+                    Matrizes são arrays bidimensionais que representam dados em linhas e colunas - a base para grids,
+                    tabelas e dados tabulares
                 </p>
             </div>
 
             <div class="summary-card">
                 <div class="summary-card-title">Resumo</div>
                 <p>
-                    Uma <strong>matriz</strong> em JavaScript é simplesmente um array cujos elementos também são arrays - 
-                    um <em>array de arrays</em>. Para acessar um elemento, usa-se dois indices: o primeiro seleciona a linha
+                    Uma <strong>matriz</strong> em JavaScript é simplesmente um array cujos elementos também são arrays
+                    -
+                    um <em>array de arrays</em>. Para acessar um elemento, usa-se dois indices: o primeiro seleciona a
+                    linha
                     e o segundo seleciona a coluna: <code>matriz[linha][coluna]</code>.
                 </p>
                 <p>
-                    Matrizes são mmuito utilizadas para representar grades de jogos, planilhas, imagens pixel-a-pixel,
-                    grafos de adjacência e qualquer dado com estrutura tabular. Para percorrê-las normalmente usa-se dois loops <code>for</code> aninhados.
+                    Matrizes são muito utilizadas para representar grades de jogos, planilhas, imagens pixel-a-pixel e qualquer dado com estrutura tabular. Para percorrê-las normalmente usa-se
+                    dois loops <code>for</code> aninhados.
                 </p>
             </div>
 
@@ -70,11 +74,12 @@
                     <div class="acc-body">
                         <div class="acc-content">
                             <p>
-                                Crie uma matriz como um array literal de arrays. Para percorrer todos os elementos, use dois
+                                Crie uma matriz como um array literal de arrays. Para percorrer todos os elementos, use
+                                dois
                                 <code>for</code> aninhados - o externo para linhas e o interno para as colunas.
                             </p>
                             <p>
-                                A propriedade <code>matriz.length</code> retorna o número de linhas, 
+                                A propriedade <code>matriz.length</code> retorna o número de linhas,
                                 <code>matriz[0].length</code> retorna o numero de colunas da primeira linha (assumindo
                                 que todas as linhas têm o mesmo tamanho).
                             </p>
@@ -97,6 +102,30 @@ console.<span class="fn">log</span>(<span class="nm">matriz</span>[<span class="
     }
 }</pre>
                             </div>
+
+                            <div class="exemplos">
+                                <h3>Exemplo 1</h3>
+                                <p>
+                                    Crie um programa que: <br>
+
+                                    Leia os valores de uma matriz 2×2 <br>
+                                    Mostre a matriz na tela no formato de linhas e colunas
+                                </p>
+                                <button
+                                    onclick="window.location.href='./exemplos/matriz/exemplo1matriz.html'">Acessar
+                                    página
+                                </button>
+                                <h3>Exemplo 2</h3>
+                                <p>
+                                    Crie um programa que:
+
+                                    Leia os valores de uma matriz 3×3
+                                    Calcule e mostre a soma da diagonal principal
+                                </p>
+                                <button
+                                    onclick="window.location.href='./exemplos/matriz/exemplo2matriz.html'">Acessar
+                                    página</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -104,6 +133,10 @@ console.<span class="fn">log</span>(<span class="nm">matriz</span>[<span class="
         </section>
 
     </main>
+
+    <footer class="site-footer">
+        Desenvolvido por <strong>Marcos Silva</strong> &mdash; Projeto Final SENAI &mdash; 2026
+    </footer>
 
 </body>
 

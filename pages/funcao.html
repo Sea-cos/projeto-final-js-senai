@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <script src="../js/script.js"></script>
+    <title>Projeto Final</title>
+</head>
+
+<body>
+
+    <header class="top-header">
+        Projeto Final - Base Conhecimento
+    </header>
+
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="condicional.html">Estruturas Condicionais</a>
+        <a href="repeticao.html">Estruturas de Repetição</a>
+        <a href="vetor.html">Vetor</a>
+        <a href="matriz.html">Matriz</a>
+        <a href="funcao.html" class="active">Função</a>
+    </nav>
+
+    <main>
+
+        <section class="page" id="page-funcoes">
+            <div class="page-header">
+                <div class="page-eyebrow">Estruturas de Código</div>
+                <h1 class="page-title">Funções <span class="accent">{ }</span></h1>
+                <p class="page-desc">
+                    Funções são blocos reutilizáveis de código que realizam tarefas específicas. Elas permitem organizar
+                    seu código de forma modular, evitar repetição e tornar seu programa mais legível e mantenível.
+                </p>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-card-title">Resumo</div>
+                <p>
+                    Uma <strong>função</strong> é um conjunto de instruções agrupadas que executa uma tarefa ou calcula
+                    um valor. Funções podem receber <strong>parâmetros</strong> (dados de entrada) e retornar um
+                    <strong>resultado</strong> (dado de saída).
+                </p>
+                <p>
+                    Use funções para evitar repetir o mesmo código, organizar lógica complexa e tornar seu programa mais
+                    fácil de testar e manter. Uma função deve fazer <em>uma coisa bem</em> - ter um propósito claro e
+                    específico.
+                </p>
+            </div>
+
+            <div class="topics-label">Tópicos</div>
+            <div class="accordion">
+
+                <div class="acc-item">
+                    <button class="acc-trigger" onclick="toggleAcc(this)">
+                        <div class="acc-left">
+                            <span class="acc-tag tag-blue">Função</span>
+                            <div>
+                                <div class="acc-name">Funções em JavaScript</div>
+                                <div class="acc-sub">Criação, parâmetros e retorno de valores</div>
+                            </div>
+                        </div>
+                        <svg class="acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="acc-body">
+                        <div class="acc-content">
+                            <p>
+                                Uma função é declarada com a palavra-chave <strong>function</strong>, seguida de um
+                                nome, parênteses para parâmetros e um bloco de código entre chaves.
+                            </p>
+                            <p>
+                                Use <strong>return</strong> para devolver um valor da função. Após o return, a função
+                                interrompe e nenhum código após esta instrução é executado. Você pode chamar uma função
+                                quantas vezes quiser pelo seu nome seguido de parênteses.
+                            </p>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-lang">JavaScript</span>
+                                    <div class="code-dots"><span></span><span></span><span></span></div>
+                                </div>
+                                <pre><span class="kw">function</span> <span class="fn">saudar</span>(<span class="nm">nome</span>) {
+  <span class="kw">return</span> <span class="str">"Olá, "</span> <span class="op">+</span> <span class="nm">nome</span>;
+}
+
+console.<span class="fn">log</span>(<span class="fn">saudar</span>(<span class="str">"Maria"</span>)); <span class="cm">// "Olá, Maria"</span>
+
+<span class="kw">function</span> <span class="fn">somar</span>(<span class="nm">a</span>, <span class="nm">b</span>) {
+  <span class="kw">return</span> <span class="nm">a</span> <span class="op">+</span> <span class="nm">b</span>;
+}
+
+console.<span class="fn">log</span>(<span class="fn">somar</span>(<span class="nm">5</span>, <span class="nm">3</span>)); <span class="cm">// 8</span></pre>
+                            </div>
+
+                            <div class="exemplos">
+                                <h3>Exemplo 1</h3>
+                                <p>
+                                    Crie uma função que receba um array de notas e retorne:
+                                    <br>
+                                    -média <br>
+                                    -maior nota <br>
+                                   - menor nota <br>
+                                    -situação do aluno: <br>
+                                    "Aprovado" se média ≥ 7 <br>
+                                    "Reprovado" caso contrário
+                                </p>
+                                <button onclick="window.location.href='./exemplos/funcao/exemplo1funcao.html'">Acessar
+                                    página
+                                </button>
+                                <h3>Exemplo 2</h3>
+                                <p>
+                                    Crie uma função que receba um array e retorne outro sem valores repetidos, mantendo a ordem.
+                                </p>
+                                <button onclick="window.location.href='./exemplos/funcao/exemplo2funcao.html'">Acessar
+                                    página</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        Desenvolvido por <strong>Marcos Silva</strong> &mdash; Projeto Final SENAI &mdash; 2026
+    </footer>
+
+</body>
+
+</html>

@@ -8,42 +8,65 @@
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="/css/exemplos.css">
-    <script src="/js/script.js"></script>
+    <link rel="stylesheet" href="../../../css/exemplos.css">
+    <script src="../../../js/script.js"></script>
     <title>Situação do Aluno</title>
 </head>
 
 <body>
+    <div class="example-shell">
+        <nav class="example-topbar">
+            <div>
+                <div class="example-kicker">Estruturas Condicionais</div>
+                <h1>If...else - Exemplo 2</h1>
+            </div>
+            <div class="example-actions">
+                <button class="btn-secondary" onclick="window.location.href='../../condicional.html'">Voltar</button>
+                <button onclick="abrirModal()">Ver código fonte</button>
+            </div>
+        </nav>
 
+        <main class="example-main">
+            <section class="example-hero">
+                <span class="example-badge">Laboratório</span>
+                <h2>Calcular Média e Situação do Aluno</h2>
+                <p>Informe três notas para calcular a média e exibir a situação final do aluno.</p>
+            </section>
 
-    <nav>
-        <h2>If..else - Exemplo 2</h2>
-        <div>
-            <button onclick="abrirModal()">Ver código fonte</button><button
-                onclick="window.location.href='../../condicional.html'">Voltar</button>
-        </div>
-    </nav>
+            <section class="example-grid">
+                <article class="example-card">
+                    <h3>Entrada</h3>
+                    <label for="nota1">Notas</label>
+                    <div class="example-form-row">
+                        <input type="number" id="nota1" placeholder="Digite a primeira nota">
+                        <input type="number" id="nota2" placeholder="Digite a segunda nota">
+                        <input type="number" id="nota3" placeholder="Digite a terceira nota">
+                    </div>
+                    <div class="example-form-row" style="margin-top: 12px;">
+                        <button onclick="calcularMedia()">Calcular</button>
+                    </div>
+                </article>
 
+                <article class="example-card result-card">
+                    <h3>Resultado</h3>
+                    <div id="resultado" class="result-output">Aguardando cálculo...</div>
+                </article>
+            </section>
+        </main>
 
-
-    <h2>Calcular Média e Situação do Aluno</h2>
-
-    <input type="number" id="nota1" placeholder="Digite a primeira nota">
-    <input type="number" id="nota2" placeholder="Digite a segunda nota">
-    <input type="number" id="nota3" placeholder="Digite a terceira nota">
-    <button onclick="calcularMedia()">Calcular</button>
-
-    <div id="resultado"></div>
-
-
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="fecharModal()">&times;</span>
-            <h3>Código Fonte</h3>
-            <pre id="codigo"></pre>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="fecharModal()">&times;</span>
+                <h3>Código Fonte</h3>
+                <pre id="codigo"></pre>
+            </div>
         </div>
     </div>
 
+
+    <footer class="site-footer">
+        Desenvolvido por <strong>Marcos Silva</strong> &mdash; Projeto Final SENAI &mdash; 2026
+    </footer>
 
     <script>
         function calcularMedia() {

@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet" />
-    <script src="/js/script.js"></script>
+    <script src="../js/script.js"></script>
     <title>Projeto Final</title>
 </head>
 
@@ -20,11 +20,12 @@
     </header>
 
     <nav>
-        <a href="index.html">Inicio</a>
-        <a href="condicional.html" >Estruturas Condicionais</a>
+        <a href="../index.html">Inicio</a>
+        <a href="condicional.html">Estruturas Condicionais</a>
         <a href="repeticao.html" class="active">Estruturas de Repetição</a>
         <a href="vetor.html">Vetor</a>
         <a href="matriz.html">Matriz</a>
+        <a href="funcao.html">Função</a>
     </nav>
 
     <main>
@@ -97,6 +98,32 @@
   console.<span class="fn">log</span>(<span class="nm">i</span>);
 }</pre>
                             </div>
+                            <div class="exemplos">
+                                <h3>Exemplo 1</h3>
+                                <p>
+                                    Peça ao usuário um número inteiro positivo <br>
+                                    Use um loop for para calcular a tabuada desse número, de 1 até 10 <br>
+                                    Exiba o resultado em tela no seguinte formato: <br>
+                                    5 x 1 = 5 <br>
+                                    5 x 2 = 10 <br>
+                                    ... <br>
+                                    5 x 10 = 50 <br>
+                                </p>
+                                <button onclick="window.location.href='./exemplos/for/exemplo1for.html'">Acessar
+                                    página
+                                </button>
+                                <h3>Exemplo 2</h3>
+                                <p>
+                                    Peça ao usuário um número inteiro positivo <br>
+                                    Use um loop for para verificar todos os números de 1 até esse valor, durante o loop,
+                                    o programa deve: <br>
+                                    Identificar quais números são divisíveis por 3 e por 5 ao mesmo tempo <br>
+                                    Ao final, exiba em tela quantos números são divisíveis por ambos.
+                                </p>
+                                <button onclick="window.location.href='./exemplos/for/exemplo2for.html'">Acessar
+                                    página
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -136,6 +163,30 @@
   console.<span class="fn">log</span>(<span class="nm">i</span>);
   <span class="nm">i</span><span class="op">++</span>;
 }</pre>
+                            </div>
+                            <div class="exemplos">
+                                <h3>Exemplo 1</h3>
+                                <p>
+                                    Crie um programa que leia números digitados pelo usuário (use prompt) até que ele
+                                    digite
+                                    0. <br>
+                                    No final, mostre: <br>
+                                    A soma total dos números <br>
+                                    Quantos números foram digitados (sem contar o 0) <br>
+                                </p>
+                                <button onclick="window.location.href='./exemplos/while/exemplo1while.html'">Acessar
+                                    página
+                                </button>
+
+                                <h3>Exemplo 2</h3>
+                                <p>
+                                    Crie um programa que peça um número inteiro positivo ao usuário e verifique se ele é
+                                    um número primo. <br>
+                                    (Um número primo é aquele que só é divisível por 1 e por ele mesmo).
+                                </p>
+                                <button onclick="window.location.href='./exemplos/while/exemplo2while.html'">Acessar
+                                    página
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -178,6 +229,28 @@
   <span class="nm">i</span><span class="op">++</span>;
 } <span class="kw">while</span> (<span class="nm">i</span> <span class="op">&lt;</span> <span class="nm">5</span>);</pre>
                             </div>
+                            <div class="exemplos">
+                                <h3>Exemplo 1</h3>
+                                <p>
+                                    Crie um programa que peça a senha do usuário e só permita sair quando ele digitar a
+                                    senha correta (1234).
+                                </p>
+                                <button
+                                    onclick="window.location.href='./exemplos/do-while/exemplo1dowhile.html'">Acessar
+                                    página
+                                </button>
+                                <h3>Exemplo 2</h3>
+                                <p>
+                                    Crie um menu com as seguintes opções: <br>
+                                    1. Mostrar mensagem <br>
+                                    2. Mostrar dia de hoje <br>
+                                    3. Sair <br>
+                                </p>
+                                <button
+                                    onclick="window.location.href='./exemplos/do-while/exemplo2dowhile.html'">Acessar
+                                    página
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -185,6 +258,10 @@
         </section>
 
     </main>
+
+    <footer class="site-footer">
+        Desenvolvido por <strong>Marcos Silva</strong> &mdash; Projeto Final SENAI &mdash; 2026
+    </footer>
 
 </body>
 

@@ -10,18 +10,18 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="../../../css/exemplos.css">
     <script src="../../../js/script.js"></script>
-    <title>Par ou Ímpar</title>
+    <title>Exemplo 1 - While</title>
 </head>
 
 <body>
     <div class="example-shell">
         <nav class="example-topbar">
             <div>
-                <div class="example-kicker">Estruturas Condicionais</div>
-                <h1>If...else - Exemplo 1</h1>
+                <div class="example-kicker">Estruturas de Repetição</div>
+                <h1>While - Exemplo 1</h1>
             </div>
             <div class="example-actions">
-                <button class="btn-secondary" onclick="window.location.href='../../condicional.html'">Voltar</button>
+                <button class="btn-secondary" onclick="window.location.href='../../repeticao.html'">Voltar</button>
                 <button onclick="abrirModal()">Ver código fonte</button>
             </div>
         </nav>
@@ -29,23 +29,20 @@
         <main class="example-main">
             <section class="example-hero">
                 <span class="example-badge">Laboratório</span>
-                <h2>Verificar Par ou Ímpar</h2>
-                <p>Digite um número inteiro para descobrir se ele é par ou ímpar.</p>
+                <h2>Repetição de Números</h2>
+                <p>Insira números até digitar 0 para encerrar a soma acumulada.</p>
             </section>
 
             <section class="example-grid">
                 <article class="example-card">
-                    <h3>Entrada</h3>
-                    <label for="numero">Número</label>
-                    <div class="example-form-row">
-                        <input type="number" id="numero" placeholder="Digite um número">
-                        <button onclick="verificar()">Verificar</button>
-                    </div>
+                    <h3>Ação</h3>
+                    <p>Este exercício usa prompts para repetir a entrada até que o valor de parada seja informado.</p>
+                    <button onclick="repeticaoNumero()">Iniciar</button>
                 </article>
 
                 <article class="example-card result-card">
                     <h3>Resultado</h3>
-                    <div id="resultado" class="result-output">O resultado aparecerá aqui.</div>
+                    <div id="resultado" class="result-output">Aguardando interação...</div>
                 </article>
             </section>
         </main>
@@ -65,22 +62,21 @@
     </footer>
 
     <script>
-        function verificar() {
-            let numero = document.getElementById("numero").value;
+        function repeticaoNumero() {
+            let numero = parseInt(prompt("Insira um número: "));
+            let soma = 0;
+            let contador = 0;
 
-            if (numero === "") {
-                document.getElementById("resultado").innerText = "Digite um número!";
-            } else {
-                numero = parseInt(numero);
+            while (numero !== 0) {
+                soma += numero;
+                contador++;
 
-                if (numero % 2 === 0) {
-                    document.getElementById("resultado").innerText = "O número é PAR";
-                } else {
-                    document.getElementById("resultado").innerText = "O número é ÍMPAR";
-                }
+                numero = parseInt(prompt("Insira um número: "))
             }
-        }
 
+            document.getElementById("resultado").innerText = "Soma total: " + soma + "\nNúmeros inseridos: " + contador
+
+        }
     </script>
 
 </body>

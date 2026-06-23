@@ -10,18 +10,18 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="../../../css/exemplos.css">
     <script src="../../../js/script.js"></script>
-    <title>Par ou Ímpar</title>
+    <title>Exemplo 2 - While</title>
 </head>
 
 <body>
     <div class="example-shell">
         <nav class="example-topbar">
             <div>
-                <div class="example-kicker">Estruturas Condicionais</div>
-                <h1>If...else - Exemplo 1</h1>
+                <div class="example-kicker">Estruturas de Repetição</div>
+                <h1>While - Exemplo 2</h1>
             </div>
             <div class="example-actions">
-                <button class="btn-secondary" onclick="window.location.href='../../condicional.html'">Voltar</button>
+                <button class="btn-secondary" onclick="window.location.href='../../repeticao.html'">Voltar</button>
                 <button onclick="abrirModal()">Ver código fonte</button>
             </div>
         </nav>
@@ -29,8 +29,8 @@
         <main class="example-main">
             <section class="example-hero">
                 <span class="example-badge">Laboratório</span>
-                <h2>Verificar Par ou Ímpar</h2>
-                <p>Digite um número inteiro para descobrir se ele é par ou ímpar.</p>
+                <h2>Validador de Número Primo</h2>
+                <p>Digite um número para verificar se ele é primo usando repetição.</p>
             </section>
 
             <section class="example-grid">
@@ -39,13 +39,13 @@
                     <label for="numero">Número</label>
                     <div class="example-form-row">
                         <input type="number" id="numero" placeholder="Digite um número">
-                        <button onclick="verificar()">Verificar</button>
+                        <button onclick="validarPrimo()">Verificar</button>
                     </div>
                 </article>
 
                 <article class="example-card result-card">
                     <h3>Resultado</h3>
-                    <div id="resultado" class="result-output">O resultado aparecerá aqui.</div>
+                    <div id="resultado" class="result-output">Aguardando verificação...</div>
                 </article>
             </section>
         </main>
@@ -65,22 +65,26 @@
     </footer>
 
     <script>
-        function verificar() {
-            let numero = document.getElementById("numero").value;
+        function validarPrimo() {
+            let numero = parseInt(document.getElementById("numero").value);
+            let isPrimo = true;
+            let divisor = 2;
 
-            if (numero === "") {
-                document.getElementById("resultado").innerText = "Digite um número!";
-            } else {
-                numero = parseInt(numero);
-
-                if (numero % 2 === 0) {
-                    document.getElementById("resultado").innerText = "O número é PAR";
-                } else {
-                    document.getElementById("resultado").innerText = "O número é ÍMPAR";
+            while (divisor < numero) {
+                if (numero % divisor === 0) {
+                    isPrimo = false
                 }
+                divisor++;
+            }
+
+            if (numero <= 1) {
+                document.getElementById("resultado").innerText = "Não é primo."
+            } else if (isPrimo) {
+                document.getElementById("resultado").innerText = "É primo."
+            } else {
+                document.getElementById("resultado").innerText = "Não é primo."
             }
         }
-
     </script>
 
 </body>

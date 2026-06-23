@@ -10,18 +10,18 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="../../../css/exemplos.css">
     <script src="../../../js/script.js"></script>
-    <title>Par ou Ímpar</title>
+    <title>Exemplo 1 - Matrizes</title>
 </head>
 
 <body>
     <div class="example-shell">
         <nav class="example-topbar">
             <div>
-                <div class="example-kicker">Estruturas Condicionais</div>
-                <h1>If...else - Exemplo 1</h1>
+                <div class="example-kicker">Matrizes</div>
+                <h1>Matrizes - Exemplo 1</h1>
             </div>
             <div class="example-actions">
-                <button class="btn-secondary" onclick="window.location.href='../../condicional.html'">Voltar</button>
+                <button class="btn-secondary" onclick="window.location.href='../../matriz.html'">Voltar</button>
                 <button onclick="abrirModal()">Ver código fonte</button>
             </div>
         </nav>
@@ -29,23 +29,20 @@
         <main class="example-main">
             <section class="example-hero">
                 <span class="example-badge">Laboratório</span>
-                <h2>Verificar Par ou Ímpar</h2>
-                <p>Digite um número inteiro para descobrir se ele é par ou ímpar.</p>
+                <h2>Preencher e listar uma matriz</h2>
+                <p>Os valores são solicitados por prompt e organizados em uma matriz 2x2.</p>
             </section>
 
             <section class="example-grid">
                 <article class="example-card">
-                    <h3>Entrada</h3>
-                    <label for="numero">Número</label>
-                    <div class="example-form-row">
-                        <input type="number" id="numero" placeholder="Digite um número">
-                        <button onclick="verificar()">Verificar</button>
-                    </div>
+                    <h3>Ação</h3>
+                    <p>Clique para preencher a matriz e visualizar o resultado final.</p>
+                    <button onclick="validarMatriz()">Iniciar</button>
                 </article>
 
                 <article class="example-card result-card">
                     <h3>Resultado</h3>
-                    <div id="resultado" class="result-output">O resultado aparecerá aqui.</div>
+                    <div id="resultado" class="matrix-output">Aguardando interação...</div>
                 </article>
             </section>
         </main>
@@ -59,30 +56,40 @@
         </div>
     </div>
 
-
     <footer class="site-footer">
         Desenvolvido por <strong>Marcos Silva</strong> &mdash; Projeto Final SENAI &mdash; 2026
     </footer>
 
     <script>
-        function verificar() {
-            let numero = document.getElementById("numero").value;
+        function validarMatriz() {
+            let linha,
+                coluna;
 
-            if (numero === "") {
-                document.getElementById("resultado").innerText = "Digite um número!";
-            } else {
-                numero = parseInt(numero);
+            let matriz = [
+                [],
+                []
+            ];
 
-                if (numero % 2 === 0) {
-                    document.getElementById("resultado").innerText = "O número é PAR";
-                } else {
-                    document.getElementById("resultado").innerText = "O número é ÍMPAR";
+            let tela = document.getElementById("resultado")
+            let resultado = ""
+
+            for (linha = 0; linha < 2; linha++) {
+                for (coluna = 0; coluna < 2; coluna++) {
+                    matriz[linha][coluna] = parseInt(prompt("Digite o valor da posição [" + linha + "][" + coluna + "]:"))
                 }
             }
+
+            for (linha = 0; linha < 2; linha++) {
+
+                for (coluna = 0; coluna < 2; coluna++) {
+                    resultado += matriz[linha][coluna] + " "
+                }
+                resultado += "<br>"
+            }
+
+            tela.innerHTML = resultado;
         }
-
     </script>
-
 </body>
 
 </html>

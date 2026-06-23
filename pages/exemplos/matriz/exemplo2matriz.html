@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../../../css/exemplos.css">
+    <script src="../../../js/script.js"></script>
+    <title>Exemplo 2 - Matrizes</title>
+</head>
+
+<body>
+    <div class="example-shell">
+        <nav class="example-topbar">
+            <div>
+                <div class="example-kicker">Matrizes</div>
+                <h1>Matrizes - Exemplo 2</h1>
+            </div>
+            <div class="example-actions">
+                <button class="btn-secondary" onclick="window.location.href='../../matriz.html'">Voltar</button>
+                <button onclick="abrirModal()">Ver código fonte</button>
+            </div>
+        </nav>
+
+        <main class="example-main">
+            <section class="example-hero">
+                <span class="example-badge">Laboratório</span>
+                <h2>Calcular diagonal da matriz</h2>
+                <p>O programa preenche uma matriz 3x3 via prompt e calcula a diagonal principal.</p>
+            </section>
+
+            <section class="example-grid">
+                <article class="example-card">
+                    <h3>Ação</h3>
+                    <p>Clique para preencher a matriz e exibir o somatório da diagonal.</p>
+                    <button onclick="calcularDiagonal()">Iniciar</button>
+                </article>
+
+                <article class="example-card result-card">
+                    <h3>Resultado</h3>
+                    <div id="matriz" class="matrix-output">Matriz aparecerá aqui.</div>
+                    <div id="resultado" class="result-output" style="margin-top: 14px;">Aguardando cálculo...</div>
+                </article>
+            </section>
+        </main>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="fecharModal()">&times;</span>
+                <h3>Código Fonte</h3>
+                <pre id="codigo"></pre>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        Desenvolvido por <strong>Marcos Silva</strong> &mdash; Projeto Final SENAI &mdash; 2026
+    </footer>
+
+    <script>
+        function calcularDiagonal() {
+            let linha,
+                coluna;
+            let matriz = [
+                [],
+                [],
+                []
+            ];
+            let numeroValido = true
+            let somaDiagonal = 0;
+            let texto = "";
+
+            for (linha = 0; linha < 3; linha++) {
+                for (coluna = 0; coluna < 3; coluna++) {
+                    matriz[linha][coluna] = parseInt(
+                        prompt("Digite o valor da posição [" + linha + "][" + coluna + "]:")
+                    );
+
+                    if (Number.isNaN(matriz[linha][coluna])) {
+                        numeroValido = false;
+                    }
+
+                    if (linha === coluna) {
+                        somaDiagonal += matriz[linha][coluna];
+                    }
+                }
+            }
+
+            if (!numeroValido) {
+                document.getElementById("resultado").innerHTML = "Insira somente números!"
+            } else {
+                for (linha = 0; linha < 3; linha++) {
+                    for (coluna = 0; coluna < 3; coluna++) {
+                        texto += matriz[linha][coluna] + " ";
+                    }
+                    texto += "<br>";
+                }
+                document.getElementById("matriz").innerHTML = texto;
+                document.getElementById("resultado").innerHTML =
+                    "Soma da diagonal principal: " + somaDiagonal;
+            }
+        }
+    </script>
+</body>
+
+</html>

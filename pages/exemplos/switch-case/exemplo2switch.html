@@ -8,50 +8,71 @@
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="/css/exemplos.css">
-    <script src="/js/script.js"></script>
+    <link rel="stylesheet" href="../../../css/exemplos.css">
+    <script src="../../../js/script.js"></script>
     <title>Calculadora com Switch</title>
 </head>
 
 <body>
+    <div class="example-shell">
+        <nav class="example-topbar">
+            <div>
+                <div class="example-kicker">Estruturas Condicionais</div>
+                <h1>Switch...case - Exemplo 2</h1>
+            </div>
+            <div class="example-actions">
+                <button class="btn-secondary" onclick="window.location.href='../../condicional.html'">Voltar</button>
+                <button onclick="abrirModal()">Ver código fonte</button>
+            </div>
+        </nav>
 
+        <main class="example-main">
+            <section class="example-hero">
+                <span class="example-badge">Laboratório</span>
+                <h2>Operações com Dois Números</h2>
+                <p>Informe dois valores e selecione a operação desejada para calcular o resultado.</p>
+            </section>
 
-    <nav>
-        <h2>Switch..case - Exemplo 2</h2>
-        <div>
-            <button onclick="abrirModal()">Ver código fonte</button><button
-                onclick="window.location.href='../../condicional.html'">Voltar</button>
-        </div>
-    </nav>
+            <section class="example-grid">
+                <article class="example-card">
+                    <h3>Entrada</h3>
+                    <label for="numero1">Números e operação</label>
+                    <div class="example-form-row">
+                        <input type="number" id="numero1" placeholder="Digite o primeiro número" step="any">
+                        <input type="number" id="numero2" placeholder="Digite o segundo número" step="any">
+                    </div>
+                    <div class="example-form-row" style="margin-top: 12px;">
+                        <select id="operacao">
+                            <option value="">Escolha a operação</option>
+                            <option value="soma">Soma (+)</option>
+                            <option value="subtracao">Subtração (-)</option>
+                            <option value="multiplicacao">Multiplicação (×)</option>
+                            <option value="divisao">Divisão (÷)</option>
+                        </select>
+                        <button onclick="calcular()">Calcular</button>
+                    </div>
+                </article>
 
+                <article class="example-card result-card">
+                    <h3>Resultado</h3>
+                    <div id="resultado" class="result-output">Aguardando cálculo...</div>
+                </article>
+            </section>
+        </main>
 
-
-    <h2>Operações com Dois Números</h2>
-
-    <input type="number" id="numero1" placeholder="Digite o primeiro número" step="any">
-    <input type="number" id="numero2" placeholder="Digite o segundo número" step="any">
-
-    <select id="operacao">
-        <option value="">Escolha a operação</option>
-        <option value="soma">Soma (+)</option>
-        <option value="subtracao">Subtração (-)</option>
-        <option value="multiplicacao">Multiplicação (×)</option>
-        <option value="divisao">Divisão (÷)</option>
-    </select>
-
-    <button onclick="calcular()">Calcular</button>
-
-    <div id="resultado"></div>
-
-
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="fecharModal()">&times;</span>
-            <h3>Código Fonte</h3>
-            <pre id="codigo"></pre>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="fecharModal()">&times;</span>
+                <h3>Código Fonte</h3>
+                <pre id="codigo"></pre>
+            </div>
         </div>
     </div>
 
+
+    <footer class="site-footer">
+        Desenvolvido por <strong>Marcos Silva</strong> &mdash; Projeto Final SENAI &mdash; 2026
+    </footer>
 
     <script>
         function calcular() {

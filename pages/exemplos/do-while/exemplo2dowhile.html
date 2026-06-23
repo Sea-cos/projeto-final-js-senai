@@ -10,18 +10,18 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="../../../css/exemplos.css">
     <script src="../../../js/script.js"></script>
-    <title>Par ou Ímpar</title>
+    <title>Exemplo 2 - Do While</title>
 </head>
 
 <body>
     <div class="example-shell">
         <nav class="example-topbar">
             <div>
-                <div class="example-kicker">Estruturas Condicionais</div>
-                <h1>If...else - Exemplo 1</h1>
+                <div class="example-kicker">Estruturas de Repetição</div>
+                <h1>Do While - Exemplo 2</h1>
             </div>
             <div class="example-actions">
-                <button class="btn-secondary" onclick="window.location.href='../../condicional.html'">Voltar</button>
+                <button class="btn-secondary" onclick="window.location.href='../../repeticao.html'">Voltar</button>
                 <button onclick="abrirModal()">Ver código fonte</button>
             </div>
         </nav>
@@ -29,23 +29,20 @@
         <main class="example-main">
             <section class="example-hero">
                 <span class="example-badge">Laboratório</span>
-                <h2>Verificar Par ou Ímpar</h2>
-                <p>Digite um número inteiro para descobrir se ele é par ou ímpar.</p>
+                <h2>Validação de Menu</h2>
+                <p>Escolha uma opção para repetir o fluxo até sair do menu.</p>
             </section>
 
             <section class="example-grid">
                 <article class="example-card">
-                    <h3>Entrada</h3>
-                    <label for="numero">Número</label>
-                    <div class="example-form-row">
-                        <input type="number" id="numero" placeholder="Digite um número">
-                        <button onclick="verificar()">Verificar</button>
-                    </div>
+                    <h3>Ação</h3>
+                    <p>Este exemplo usa prompts do navegador para mostrar o comportamento do <strong>do...while</strong>.</p>
+                    <button onclick="validarMenu()">Iniciar</button>
                 </article>
 
                 <article class="example-card result-card">
                     <h3>Resultado</h3>
-                    <div id="resultado" class="result-output">O resultado aparecerá aqui.</div>
+                    <div id="resultado" class="result-output">Aguardando interação...</div>
                 </article>
             </section>
         </main>
@@ -59,30 +56,35 @@
         </div>
     </div>
 
-
     <footer class="site-footer">
         Desenvolvido por <strong>Marcos Silva</strong> &mdash; Projeto Final SENAI &mdash; 2026
     </footer>
 
     <script>
-        function verificar() {
-            let numero = document.getElementById("numero").value;
+        function validarMenu() {
+            let escolha;
+            let date = new Date();
+            let today = date.getDate();
 
-            if (numero === "") {
-                document.getElementById("resultado").innerText = "Digite um número!";
-            } else {
-                numero = parseInt(numero);
 
-                if (numero % 2 === 0) {
-                    document.getElementById("resultado").innerText = "O número é PAR";
-                } else {
-                    document.getElementById("resultado").innerText = "O número é ÍMPAR";
+            do {
+                escolha = parseInt(prompt("Selecione uma opção: \n1. Mostrar mensagem \n2. Mostrar dia de hoje\n3. Sair"))
+
+                switch (escolha) {
+                    case 1:
+                        alert("Olá, mundo!")
+                        break;
+                    case 2:
+                        alert("O dia de hoje é: " + today)
+                        break;
+                    default:
+                        break;
                 }
-            }
+            } while (escolha !== 3);
+
+            
         }
-
     </script>
-
 </body>
 
 </html>

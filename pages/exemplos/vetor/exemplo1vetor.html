@@ -10,18 +10,18 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="../../../css/exemplos.css">
     <script src="../../../js/script.js"></script>
-    <title>Par ou Ímpar</title>
+    <title>Exemplo 1 - Vetores</title>
 </head>
 
 <body>
     <div class="example-shell">
         <nav class="example-topbar">
             <div>
-                <div class="example-kicker">Estruturas Condicionais</div>
-                <h1>If...else - Exemplo 1</h1>
+                <div class="example-kicker">Vetores</div>
+                <h1>Vetores - Exemplo 1</h1>
             </div>
             <div class="example-actions">
-                <button class="btn-secondary" onclick="window.location.href='../../condicional.html'">Voltar</button>
+                <button class="btn-secondary" onclick="window.location.href='../../vetor.html'">Voltar</button>
                 <button onclick="abrirModal()">Ver código fonte</button>
             </div>
         </nav>
@@ -29,23 +29,20 @@
         <main class="example-main">
             <section class="example-hero">
                 <span class="example-badge">Laboratório</span>
-                <h2>Verificar Par ou Ímpar</h2>
-                <p>Digite um número inteiro para descobrir se ele é par ou ímpar.</p>
+                <h2>Somar valores em vetor</h2>
+                <p>O programa solicita cinco valores e retorna o vetor preenchido junto da soma total.</p>
             </section>
 
             <section class="example-grid">
                 <article class="example-card">
-                    <h3>Entrada</h3>
-                    <label for="numero">Número</label>
-                    <div class="example-form-row">
-                        <input type="number" id="numero" placeholder="Digite um número">
-                        <button onclick="verificar()">Verificar</button>
-                    </div>
+                    <h3>Ação</h3>
+                    <p>Use o botão abaixo para preencher os valores via prompt do navegador.</p>
+                    <button onclick="somarVetor()">Iniciar</button>
                 </article>
 
                 <article class="example-card result-card">
                     <h3>Resultado</h3>
-                    <div id="resultado" class="result-output">O resultado aparecerá aqui.</div>
+                    <div id="resultado" class="result-output">Aguardando interação...</div>
                 </article>
             </section>
         </main>
@@ -59,30 +56,30 @@
         </div>
     </div>
 
-
     <footer class="site-footer">
         Desenvolvido por <strong>Marcos Silva</strong> &mdash; Projeto Final SENAI &mdash; 2026
     </footer>
 
     <script>
-        function verificar() {
-            let numero = document.getElementById("numero").value;
+        function somarVetor() {
+            let numeros = new Array(5);
+            let soma = 0;
+            let i;
 
-            if (numero === "") {
-                document.getElementById("resultado").innerText = "Digite um número!";
+            for (i = 0; i < numeros.length; i++) {
+                numeros[i] = parseInt(prompt("Insira o " + (i + 1) + " número: "));
+                soma += numeros[i];
+            }
+
+            if (Number.isNaN(soma)) {
+                document.getElementById("resultado").innerText = "Por favor, insira apenas números."
             } else {
-                numero = parseInt(numero);
+                document.getElementById("resultado").innerText = "Vetor: " + numeros + "\nSoma: " + soma;
 
-                if (numero % 2 === 0) {
-                    document.getElementById("resultado").innerText = "O número é PAR";
-                } else {
-                    document.getElementById("resultado").innerText = "O número é ÍMPAR";
-                }
             }
         }
 
     </script>
-
 </body>
 
 </html>
