@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../../../css/exemplos.css">
+    <script src="../../../js/script.js"></script>
+    <title>Exemplo 1 - Funções</title>
+</head>
+
+<body>
+
+    <nav>
+        <h2>Funções - Exemplo 1</h2>
+        <div>
+            <button onclick="abrirModal()">Ver código fonte</button><button
+                onclick="window.location.href='../../funcao.html'">Voltar</button>
+        </div>
+    </nav>
+
+    <h2>Validador de notas</h2>
+    <p>Informe a quantidade e as respectivas notas.</p>
+
+    <button onclick="executarScript()">Iniciar</button>
+
+    <div id="resultado"></div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h3>Código Fonte</h3>
+            <pre id="codigo"></pre>
+        </div>
+    </div>
+
+    <script>
+
+        function analisarNotas(notas) {
+            let soma = 0;
+            let maior = notas[0];
+            let menor = notas[0];
+
+            for (let i = 0; i < notas.length; i++) {
+                soma += notas[i];
+
+                if (notas[i] > maior) {
+                    maior = notas[i];
+                }
+
+                if (notas[i] < menor) {
+                    menor = notas[i];
+                }
+            }
+
+            let media = soma / notas.length;
+            let situacao = media >= 7 ? "Aprovado" : "Reprovado";
+
+            return {
+                media: media.toFixed(2),
+                maior,
+                menor,
+                situacao
+            };
+        }
+
+        function executarScript() {
+            let quantidade = parseInt(prompt("Quantas notas deseja informar?"));
+            if (isNaN(quantidade) || quantidade <= 0 || quantidade > 10) {
+                alert("Informe uma quantidade entre 1 e 10 notas!");
+                return;
+            }
+            let notas = [];
+
+            for (let i = 0; i < quantidade; i++) {
+                let nota = parseFloat(prompt(`Digite a nota ${i + 1}:`));
+
+
+                if (isNaN(nota) || nota < 0 || nota > 10) {
+                    alert("Nota inválida! Digite um valor entre 0 e 10.");
+                    i--;
+                    continue;
+                }
+                notas.push(nota);
+            }
+
+            let resultado = analisarNotas(notas);
+
+            document.getElementById("resultado").innerText =
+                `Média: ${resultado.media}\n` +
+                `Maior nota: ${resultado.maior}\n` +
+                `Menor nota: ${resultado.menor}\n` +
+                `Situação: ${resultado.situacao}`
+        }
+    </script>
+</body>
+
+</html>
