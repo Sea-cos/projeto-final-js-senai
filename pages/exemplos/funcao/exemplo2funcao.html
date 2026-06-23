@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../../../css/exemplos.css">
+    <script src="../../../js/script.js"></script>
+    <title>Exemplo 2 - Funções</title>
+</head>
+
+<body>
+
+    <nav>
+        <h2>Funções - Exemplo 2</h2>
+        <div>
+            <button onclick="abrirModal()">Ver código fonte</button><button
+                onclick="window.location.href='../../funcao.html'">Voltar</button>
+        </div>
+    </nav>
+
+    <h2>Tratar valores duplicados em um array</h2>
+    <p></p>
+
+    <button onclick="executarScript()">Iniciar</button>
+
+    <div id="resultado"></div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h3>Código Fonte</h3>
+            <pre id="codigo"></pre>
+        </div>
+    </div>
+
+    <script>
+        function removerDuplicados(array) {
+            let resultado = [];
+
+            for (let i = 0; i < array.length; i++) {
+                let existe = false;
+
+                for (let j = 0; j < resultado.length; j++) {
+                    if (array[i] === resultado[j]) {
+                        existe = true;
+                        break;
+                    }
+                }
+
+                if (!existe) {
+                    resultado.push(array[i]);
+                }
+            }
+
+            return resultado;
+        }
+
+        function executarScript() {
+            let quantidade = parseInt(prompt("Quantos elementos deseja informar?"));
+            let valores = [];
+
+            for (let i = 0; i < quantidade; i++) {
+                let valor = prompt(`Digite o elemento ${i + 1}:`);
+                valores.push(valor);
+            }
+
+
+            let semDuplicados = removerDuplicados(valores);
+
+            document.getElementById("resultado").innerText =
+                `Array original: ${valores.join(", ")}\n` +
+                `Array sem duplicados: ${semDuplicados.join(", ")}`
+        }
+
+    </script>
+</body>
+
+</html>
