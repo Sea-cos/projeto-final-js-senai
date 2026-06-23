@@ -14,31 +14,48 @@
 </head>
 
 <body>
+    <div class="example-shell">
+        <nav class="example-topbar">
+            <div>
+                <div class="example-kicker">Estruturas de Repetição</div>
+                <h1>For - Exemplo 1</h1>
+            </div>
+            <div class="example-actions">
+                <button class="btn-secondary" onclick="window.location.href='../../repeticao.html'">Voltar</button>
+                <button onclick="abrirModal()">Ver código fonte</button>
+            </div>
+        </nav>
 
+        <main class="example-main">
+            <section class="example-hero">
+                <span class="example-badge">Laboratório</span>
+                <h2>Gerar Tabuada</h2>
+                <p>Digite um número inteiro positivo para montar a tabuada de 1 a 10.</p>
+            </section>
 
-    <nav>
-        <h2>For - Exemplo 1</h2>
-        <div>
-            <button onclick="abrirModal()">Ver código fonte</button><button
-                onclick="window.location.href='../../repeticao.html'">Voltar</button>
-        </div>
-    </nav>
+            <section class="example-grid">
+                <article class="example-card">
+                    <h3>Entrada</h3>
+                    <label for="numero">Número</label>
+                    <div class="example-form-row">
+                        <input type="number" id="numero" placeholder="Digite um número inteiro positivo" min="1" step="1">
+                        <button onclick="gerarTabuada()">Gerar tabuada</button>
+                    </div>
+                </article>
 
+                <article class="example-card result-card">
+                    <h3>Resultado</h3>
+                    <div id="resultado" class="result-output">A tabuada aparecerá aqui.</div>
+                </article>
+            </section>
+        </main>
 
-
-    <h2>Gerar Tabuada</h2>
-
-    <input type="number" id="numero" placeholder="Digite um número inteiro positivo" min="1" step="1">
-    <button onclick="gerarTabuada()">Gerar tabuada</button>
-
-    <div id="resultado"></div>
-
-
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="fecharModal()">&times;</span>
-            <h3>Código Fonte</h3>
-            <pre id="codigo"></pre>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="fecharModal()">&times;</span>
+                <h3>Código Fonte</h3>
+                <pre id="codigo"></pre>
+            </div>
         </div>
     </div>
 
