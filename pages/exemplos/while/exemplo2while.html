@@ -14,27 +14,48 @@
 </head>
 
 <body>
+    <div class="example-shell">
+        <nav class="example-topbar">
+            <div>
+                <div class="example-kicker">Estruturas de Repetição</div>
+                <h1>While - Exemplo 2</h1>
+            </div>
+            <div class="example-actions">
+                <button class="btn-secondary" onclick="window.location.href='../../repeticao.html'">Voltar</button>
+                <button onclick="abrirModal()">Ver código fonte</button>
+            </div>
+        </nav>
 
-    <nav>
-        <h2>While - Exemplo 2</h2>
-        <div>
-            <button onclick="abrirModal()">Ver código fonte</button><button
-                onclick="window.location.href='../../repeticao.html'">Voltar</button>
-        </div>
-    </nav>
+        <main class="example-main">
+            <section class="example-hero">
+                <span class="example-badge">Laboratório</span>
+                <h2>Validador de Número Primo</h2>
+                <p>Digite um número para verificar se ele é primo usando repetição.</p>
+            </section>
 
-    <h2>Validador de Número Primo</h2>
+            <section class="example-grid">
+                <article class="example-card">
+                    <h3>Entrada</h3>
+                    <label for="numero">Número</label>
+                    <div class="example-form-row">
+                        <input type="number" id="numero" placeholder="Digite um número">
+                        <button onclick="validarPrimo()">Verificar</button>
+                    </div>
+                </article>
 
-    <input type="number" id="numero" placeholder="Digite um número">
-    <button onclick="validarPrimo()">Verificar</button>
+                <article class="example-card result-card">
+                    <h3>Resultado</h3>
+                    <div id="resultado" class="result-output">Aguardando verificação...</div>
+                </article>
+            </section>
+        </main>
 
-    <div id="resultado"></div>
-
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="fecharModal()">&times;</span>
-            <h3>Código Fonte</h3>
-            <pre id="codigo"></pre>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="fecharModal()">&times;</span>
+                <h3>Código Fonte</h3>
+                <pre id="codigo"></pre>
+            </div>
         </div>
     </div>
 

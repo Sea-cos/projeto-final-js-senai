@@ -14,38 +14,74 @@
 </head>
 
 <body>
+    <div class="example-shell">
+        <nav class="example-topbar">
+            <div>
+                <div class="example-kicker">Estruturas de Repetição</div>
+                <h1>Do While - Exemplo 1</h1>
+            </div>
+            <div class="example-actions">
+                <button class="btn-secondary" onclick="window.location.href='../../repeticao.html'">Voltar</button>
+                <button onclick="abrirModal()">Ver código fonte</button>
+            </div>
+        </nav>
 
-    <nav>
-        <h2>Do While - Exemplo 1</h2>
-        <div>
-            <button onclick="abrirModal()">Ver código fonte</button><button onclick="window.location.href='../../repeticao.html'">Voltar</button>
-        </div>
-    </nav>
+        <main class="example-main">
+            <section class="example-hero">
+                <span class="example-badge">Laboratório</span>
+                <h2>Validar senha específica</h2>
+                <p>
+                    Digite a senha correta para liberar o acesso. O bloco simula a repetição do <strong>do...while</strong> até encontrar o valor esperado.
+                </p>
+                <div class="example-note">Senha de teste: 1234</div>
+            </section>
 
-    <h2>Validar senha especifica</h2>
-    <p>O programa vai solicitar até que a senha inserida seja '1234'.</p>
+            <section class="example-grid">
+                <article class="example-card">
+                    <h3>Entrada</h3>
+                    <label for="senha">Senha</label>
+                    <div class="example-form-row">
+                        <input type="password" id="senha" placeholder="Digite a senha">
+                        <button onclick="validarSenha()">Validar</button>
+                    </div>
+                </article>
 
-    <button onclick="validarSenha()">Iniciar</button>
+                <article class="example-card result-card">
+                    <h3>Resultado</h3>
+                    <div id="resultado" class="result-output">Aguardando validação...</div>
+                </article>
+            </section>
+        </main>
 
-    <div id="resultado"></div>
-
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="fecharModal()">&times;</span>
-            <h3>Código Fonte</h3>
-            <pre id="codigo"></pre>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="fecharModal()">&times;</span>
+                <h3>Código Fonte</h3>
+                <pre id="codigo"></pre>
+            </div>
         </div>
     </div>
 
     <script>
+        let tentativas = 0;
+
         function validarSenha() {
             let senha;
 
             do {
-                senha = prompt("Insira a senha para acessar o sistema: ")
-            } while (senha != "1234");
+                senha = document.getElementById("senha").value;
+                tentativas++;
 
-            document.getElementById("resultado").innerText = "Acesso permitido!"
+                if (senha !== "1234") {
+                    document.getElementById("resultado").innerText = `Senha incorreta. Tente novamente. Tentativas: ${tentativas}`;
+                    document.getElementById("senha").value = "";
+                    document.getElementById("senha").focus();
+                    return;
+                }
+            } while (senha !== "1234");
+
+            document.getElementById("resultado").innerText = `Acesso permitido! Tentativas: ${tentativas}`;
+            tentativas = 0;
         }
     </script>
 </body>

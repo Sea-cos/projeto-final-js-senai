@@ -14,26 +14,45 @@
 </head>
 
 <body>
+    <div class="example-shell">
+        <nav class="example-topbar">
+            <div>
+                <div class="example-kicker">Matrizes</div>
+                <h1>Matrizes - Exemplo 1</h1>
+            </div>
+            <div class="example-actions">
+                <button class="btn-secondary" onclick="window.location.href='../../matriz.html'">Voltar</button>
+                <button onclick="abrirModal()">Ver código fonte</button>
+            </div>
+        </nav>
 
-    <nav>
-        <h2>Matrizes - Exemplo 1</h2>
-        <div>
-            <button onclick="abrirModal()">Ver código fonte</button><button
-                onclick="window.location.href='../../matriz.html'">Voltar</button>
-        </div>
-    </nav>
+        <main class="example-main">
+            <section class="example-hero">
+                <span class="example-badge">Laboratório</span>
+                <h2>Preencher e listar uma matriz</h2>
+                <p>Os valores são solicitados por prompt e organizados em uma matriz 2x2.</p>
+            </section>
 
-    <h2>Preencher e listar uma matriz</h2>
+            <section class="example-grid">
+                <article class="example-card">
+                    <h3>Ação</h3>
+                    <p>Clique para preencher a matriz e visualizar o resultado final.</p>
+                    <button onclick="validarMatriz()">Iniciar</button>
+                </article>
 
-    <button onclick="validarMatriz()">Iniciar</button>
+                <article class="example-card result-card">
+                    <h3>Resultado</h3>
+                    <div id="resultado" class="matrix-output">Aguardando interação...</div>
+                </article>
+            </section>
+        </main>
 
-    <div id="resultado"></div>
-
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="fecharModal()">&times;</span>
-            <h3>Código Fonte</h3>
-            <pre id="codigo"></pre>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="fecharModal()">&times;</span>
+                <h3>Código Fonte</h3>
+                <pre id="codigo"></pre>
+            </div>
         </div>
     </div>
 

@@ -14,26 +14,45 @@
 </head>
 
 <body>
+    <div class="example-shell">
+        <nav class="example-topbar">
+            <div>
+                <div class="example-kicker">Estruturas de Repetição</div>
+                <h1>Do While - Exemplo 2</h1>
+            </div>
+            <div class="example-actions">
+                <button class="btn-secondary" onclick="window.location.href='../../repeticao.html'">Voltar</button>
+                <button onclick="abrirModal()">Ver código fonte</button>
+            </div>
+        </nav>
 
-    <nav>
-        <h2>Do While - Exemplo 2</h2>
-        <div>
-            <button onclick="abrirModal()">Ver código fonte</button><button onclick="window.location.href='../../repeticao.html'">Voltar</button>
-        </div>
-    </nav>
+        <main class="example-main">
+            <section class="example-hero">
+                <span class="example-badge">Laboratório</span>
+                <h2>Validação de Menu</h2>
+                <p>Escolha uma opção para repetir o fluxo até sair do menu.</p>
+            </section>
 
-    <h2>Validação de Menu</h2>
-    
+            <section class="example-grid">
+                <article class="example-card">
+                    <h3>Ação</h3>
+                    <p>Este exemplo usa prompts do navegador para mostrar o comportamento do <strong>do...while</strong>.</p>
+                    <button onclick="validarMenu()">Iniciar</button>
+                </article>
 
-    <button onclick="validarMenu()">Iniciar</button>
+                <article class="example-card result-card">
+                    <h3>Resultado</h3>
+                    <div id="resultado" class="result-output">Aguardando interação...</div>
+                </article>
+            </section>
+        </main>
 
-    <div id="resultado"></div>
-
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="fecharModal()">&times;</span>
-            <h3>Código Fonte</h3>
-            <pre id="codigo"></pre>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="fecharModal()">&times;</span>
+                <h3>Código Fonte</h3>
+                <pre id="codigo"></pre>
+            </div>
         </div>
     </div>
 
@@ -53,6 +72,7 @@
                         break;
                     case 2:
                         alert("O dia de hoje é: " + today)
+                        break;
                     default:
                         break;
                 }
